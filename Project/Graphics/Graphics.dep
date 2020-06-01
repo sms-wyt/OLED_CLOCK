@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>3114674457</fileChecksum>
+    <configuration>
+        <name>Graphics</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\..\Components\driver\common\i2c_hard.c</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\common\delay.c</file>
+            <file>$PROJ_DIR$\source\main.c</file>
+            <file>$PROJ_DIR$\..\..\Components\device\common\clock_plate.c</file>
+            <file>$PROJ_DIR$\..\..\Components\device\common\ds3231.c</file>
+            <file>$PROJ_DIR$\..\..\Components\device\common\oled.c</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\common\spi_hard.c</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\common\uart.c</file>
+            <file>$PROJ_DIR$\Graphics\Obj\delay.r51</file>
+            <file>$PROJ_DIR$\Graphics\Obj\oled.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\Components\device\include\font.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\ds3231.pbi</file>
+            <file>$PROJ_DIR$\Graphics\Exe\Graphics.bin</file>
+            <file>$PROJ_DIR$\Graphics\Obj\spi_hard.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\ioSTC8.h</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\include\spi_hard.h</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\include\i2c_hard.h</file>
+            <file>$PROJ_DIR$\Graphics\Exe\Graphics.hex</file>
+            <file>$PROJ_DIR$\Graphics\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Graphics\Obj\delay.pbi</file>
+            <file>$PROJ_DIR$\..\..\Components\device\include\ds3231.h</file>
+            <file>$PROJ_DIR$\Graphics\Exe\Graphics.d51</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+            <file>$TOOLKIT_DIR$\config\devices\STC\lnk51ew_STC8A8K64S4A12.xcl</file>
+            <file>$PROJ_DIR$\..\..\Components\device\include\clock_plate.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\i2c_hard.r51</file>
+            <file>$PROJ_DIR$\Graphics\List\Graphics.map</file>
+            <file>$PROJ_DIR$\Graphics\Obj\clock_plate.r51</file>
+            <file>$PROJ_DIR$\Graphics\Obj\ds3231.r51</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdbool.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\ds3231.__cstat.et</file>
+            <file>$PROJ_DIR$\Graphics\Obj\i2c_hard.__cstat.et</file>
+            <file>$PROJ_DIR$\Graphics\Obj\delay.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\Components\device\include\oled.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\oled.pbi</file>
+            <file>$PROJ_DIR$\Graphics\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Graphics\Obj\spi_hard.r51</file>
+            <file>$PROJ_DIR$\Graphics\Obj\clock_plate.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\clib\math.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+            <file>$PROJ_DIR$\..\..\Components\board\include\hal_types.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\i2c_hard.pbi</file>
+            <file>$PROJ_DIR$\Graphics\Obj\uart.__cstat.et</file>
+            <file>$PROJ_DIR$\Graphics\Obj\Graphics.pbd</file>
+            <file>$PROJ_DIR$\Graphics\Obj\uart.r51</file>
+            <file>$PROJ_DIR$\..\..\Components\board\include\type.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\clock_plate.pbi</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\include\uart.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\oled.r51</file>
+            <file>$PROJ_DIR$\Graphics\Obj\main.r51</file>
+            <file>$PROJ_DIR$\Graphics\Obj\uart.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\include\delay.h</file>
+            <file>$PROJ_DIR$\Graphics\Obj\spi_hard.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+            <file>$PROJ_DIR$\..\..\Components\driver\include\heap_manage.h</file>
+            <file>$TOOLKIT_DIR$\lib\clib\cl-pli-nlxd-1e16x01.r51</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\driver\common\i2c_hard.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 25</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 31</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 16 40 29 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40 29 14 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\driver\common\delay.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 32</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 53 45 40 29 52 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29 40 14 45 52 53</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\source\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 50</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 35</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 18</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 14 15 40 29 33 47 45 24 16 20 53 52 39 55</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 29 39 24 33 20 40 15 47 16 53 14 45 52 55</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\device\common\clock_plate.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 37</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 24 40 29 33 47 45 53 52</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47 33 53 29 40 24 45 52</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\device\common\ds3231.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 28</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 30</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 20 40 29 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 20 16 40 29</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\device\common\oled.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 49</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 34</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 9</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 33 40 29 15 14 53 45 52 38 55 47 10</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45 38 52 14 10 29 15 53 47 40 33 55</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\driver\common\spi_hard.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 36</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 54</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 15 40 29 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40 14 29 15</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\Components\driver\common\uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 51</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 42</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 47 45 40 29 48 55 22 39 14 56</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 14 55 22 45 29 48 39 40 47 56</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 21 26 17 12</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Graphics\Exe\Graphics.d51</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 26 17 12</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 23 27 8 28 25 50 49 36 44 57</file>
+                </tool>
+            </inputs>
+        </file>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\Components\device\common\ds3231.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

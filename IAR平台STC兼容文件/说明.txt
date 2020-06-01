@@ -1,0 +1,6 @@
+一、在IAR设备添加STC单片机类型
+  1、将附录文件夹devices下的STC文件夹复制到IAR安装的目录D:\IAR_8051_10\8051\config\devices中。
+
+二、在IAR添加STC单片机头文件
+  1、将附录文件夹STC头文件下的ioSTC8.h复制到IAR目录D:\IAR_8051_10\8051\inc中
+   

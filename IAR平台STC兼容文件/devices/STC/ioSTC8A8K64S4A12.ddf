@@ -1,0 +1,1180 @@
+;;                      - ioSTC8A8K64S4A12.ddf -
+;;
+;; Special header for STC8A8K64S4A12.
+;;
+
+;;
+;; Description of the format in section [Memory]
+;; ---------------------------------------------
+;; Define existing memory: 
+;;   Memory = <name> <zone>  <start address> <end address> <access>
+;;   name          : Your name of the address space.
+;;   zone          : Name of the zone (Code, XData, IData, SFR) that the memory is placed in
+;;   start address : Start of your memory block
+;;   end address   : End of memory your block
+;;   access        : Type of access, read-only (R) or read-write (RW)
+;;
+;; Protect a SFR register:
+;;   Protect = SFR <address> <noOfBytes>
+;;
+
+;; Example:
+;;
+;;[Memory]
+;;Memory = MyCodeSpace  Code  0x2000 0x3FFF R
+;;Memory = MyDataSpace  XData 0x0300 0x03FF RW
+
+;;Protect = SFR 0x80 1
+;;Protect = SFR 0x90 1
+
+
+;;
+;; Description of the format in sections [BankN]
+;; ---------------------------------------------
+;; Format:   sectorN = start_address size memory_type
+;; Used to define banked address zones within the 8051 address space (Bank).
+;;
+;;   start_address  start of bank block
+;;   size           size of bank block
+;;   memory_type    type of memory (program or data)
+;;
+;;[Bank]
+
+
+
+;; SFR page info
+;;
+;; Description of the format in section [SfrPageInfo]
+;; --------------------------------------------------
+;;
+;; If the device have several page registers use:
+;;  SfrPageGroupsN = SFR_address SFR_page_address page_group
+;;
+;; If the device only have one page register use:
+;;  SfrPageRegister = SFR_page_address
+;;
+;;[SfrPageInfo]
+
+;; IO Register definitions
+[Sfr]
+
+;; I/O port registers group
+;; ------------------------------------------------------------
+sfr = "P0",                      "SFR", 80, 1, base=16, tooltip="Port 0"
+sfr = "P0.P0_0",                 "SFR", 80, 1, base=16, bitRange=0
+sfr = "P0.P0_1",                 "SFR", 80, 1, base=16, bitRange=1
+sfr = "P0.P0_2",                 "SFR", 80, 1, base=16, bitRange=2
+sfr = "P0.P0_3",                 "SFR", 80, 1, base=16, bitRange=3
+sfr = "P0.P0_4",                 "SFR", 80, 1, base=16, bitRange=4
+sfr = "P0.P0_5",                 "SFR", 80, 1, base=16, bitRange=5
+sfr = "P0.P0_6",                 "SFR", 80, 1, base=16, bitRange=6
+sfr = "P0.P0_7",                 "SFR", 80, 1, base=16, bitRange=7
+sfr = "P0M0",                    "SFR", 94, 1, base=16, tooltip="Port 0 output mode 0"
+sfr = "P0M0.P0M00_",             "SFR", 94, 1, base=16, bitRange=0
+sfr = "P0M0.P0M01_",             "SFR", 94, 1, base=16, bitRange=1
+sfr = "P0M0.P0M02_",             "SFR", 94, 1, base=16, bitRange=2
+sfr = "P0M0.P0M03_",             "SFR", 94, 1, base=16, bitRange=3
+sfr = "P0M0.P0M04_",             "SFR", 94, 1, base=16, bitRange=4
+sfr = "P0M0.P0M05_",             "SFR", 94, 1, base=16, bitRange=5
+sfr = "P0M0.P0M06_",             "SFR", 94, 1, base=16, bitRange=6
+sfr = "P0M0.P0M07_",             "SFR", 94, 1, base=16, bitRange=7
+sfr = "P0M1",                    "SFR", 93, 1, base=16, tooltip="Port 0 output mode 1"
+sfr = "P0M1.P0M10_",             "SFR", 93, 1, base=16, bitRange=0
+sfr = "P0M1.P0M11_",             "SFR", 93, 1, base=16, bitRange=1
+sfr = "P0M1.P0M12_",             "SFR", 93, 1, base=16, bitRange=2
+sfr = "P0M1.P0M13_",             "SFR", 93, 1, base=16, bitRange=3
+sfr = "P0M1.P0M14_",             "SFR", 93, 1, base=16, bitRange=4
+sfr = "P0M1.P0M15_",             "SFR", 93, 1, base=16, bitRange=5
+sfr = "P0M1.P0M16_",             "SFR", 93, 1, base=16, bitRange=6
+sfr = "P0M1.P0M17_",             "SFR", 93, 1, base=16, bitRange=7
+sfr = "P0PU",                    "XData", FE10, 1, base=16, tooltip="Port 0 Pull up control register"
+sfr = "P0NCS",                   "XData", FE18, 1, base=16, tooltip="Port 0 Schmidt trigger control register"
+sfr = "P1",                      "SFR", 90, 1, base=16, tooltip="Port 1"
+sfr = "P1.P1_0",                 "SFR", 90, 1, base=16, bitRange=0
+sfr = "P1.P1_1",                 "SFR", 90, 1, base=16, bitRange=1
+sfr = "P1.P1_2",                 "SFR", 90, 1, base=16, bitRange=2
+sfr = "P1.P1_3",                 "SFR", 90, 1, base=16, bitRange=3
+sfr = "P1.P1_4",                 "SFR", 90, 1, base=16, bitRange=4
+sfr = "P1.P1_5",                 "SFR", 90, 1, base=16, bitRange=5
+sfr = "P1.P1_6",                 "SFR", 90, 1, base=16, bitRange=6
+sfr = "P1.P1_7",                 "SFR", 90, 1, base=16, bitRange=7
+sfr = "P1M0",                    "SFR", 92, 1, base=16, tooltip="Port 1 output mode 0"
+sfr = "P1M0.P1M00_",             "SFR", 92, 1, base=16, bitRange=0
+sfr = "P1M0.P1M01_",             "SFR", 92, 1, base=16, bitRange=1
+sfr = "P1M0.P1M02_",             "SFR", 92, 1, base=16, bitRange=2
+sfr = "P1M0.P1M03_",             "SFR", 92, 1, base=16, bitRange=3
+sfr = "P1M0.P1M04_",             "SFR", 92, 1, base=16, bitRange=4
+sfr = "P1M0.P1M05_",             "SFR", 92, 1, base=16, bitRange=5
+sfr = "P1M0.P1M06_",             "SFR", 92, 1, base=16, bitRange=6
+sfr = "P1M0.P1M07_",             "SFR", 92, 1, base=16, bitRange=7
+sfr = "P1M1",                    "SFR", 91, 1, base=16, tooltip="Port 1 output mode 1"
+sfr = "P1M1.P1M10_",             "SFR", 91, 1, base=16, bitRange=0
+sfr = "P1M1.P1M11_",             "SFR", 91, 1, base=16, bitRange=1
+sfr = "P1M1.P1M12_",             "SFR", 91, 1, base=16, bitRange=2
+sfr = "P1M1.P1M13_",             "SFR", 91, 1, base=16, bitRange=3
+sfr = "P1M1.P1M14_",             "SFR", 91, 1, base=16, bitRange=4
+sfr = "P1M1.P1M15_",             "SFR", 91, 1, base=16, bitRange=5
+sfr = "P1M1.P1M16_",             "SFR", 91, 1, base=16, bitRange=6
+sfr = "P1M1.P1M17_",             "SFR", 91, 1, base=16, bitRange=7
+sfr = "P1PU",                    "XData", FE11, 1, base=16, tooltip="Port 1 Pull up control register"
+sfr = "P1NCS",                   "XData", FE19, 1, base=16, tooltip="Port 1 Schmidt trigger control register"
+sfr = "P2",                      "SFR", A0, 1, base=16, tooltip="Port 2"
+sfr = "P2.P2_0",                 "SFR", A0, 1, base=16, bitRange=0
+sfr = "P2.P2_1",                 "SFR", A0, 1, base=16, bitRange=1
+sfr = "P2.P2_2",                 "SFR", A0, 1, base=16, bitRange=2
+sfr = "P2.P2_3",                 "SFR", A0, 1, base=16, bitRange=3
+sfr = "P2.P2_4",                 "SFR", A0, 1, base=16, bitRange=4
+sfr = "P2.P2_5",                 "SFR", A0, 1, base=16, bitRange=5
+sfr = "P2.P2_6",                 "SFR", A0, 1, base=16, bitRange=6
+sfr = "P2.P2_7",                 "SFR", A0, 1, base=16, bitRange=7
+sfr = "P2M0",                    "SFR", 96, 1, base=16, tooltip="Port 2 output mode 0"
+sfr = "P2M0.P2M00_",             "SFR", 96, 1, base=16, bitRange=0
+sfr = "P2M0.P2M01_",             "SFR", 96, 1, base=16, bitRange=1
+sfr = "P2M0.P2M02_",             "SFR", 96, 1, base=16, bitRange=2
+sfr = "P2M0.P2M03_",             "SFR", 96, 1, base=16, bitRange=3
+sfr = "P2M0.P2M04_",             "SFR", 96, 1, base=16, bitRange=4
+sfr = "P2M0.P2M05_",             "SFR", 96, 1, base=16, bitRange=5
+sfr = "P2M0.P2M06_",             "SFR", 96, 1, base=16, bitRange=6
+sfr = "P2M0.P2M07_",             "SFR", 96, 1, base=16, bitRange=7
+sfr = "P2M1",                    "SFR", 95, 1, base=16, tooltip="Port 2 output mode 1"
+sfr = "P2M1.P2M10_",             "SFR", 95, 1, base=16, bitRange=0
+sfr = "P2M1.P2M11_",             "SFR", 95, 1, base=16, bitRange=1
+sfr = "P2M1.P2M12_",             "SFR", 95, 1, base=16, bitRange=2
+sfr = "P2M1.P2M13_",             "SFR", 95, 1, base=16, bitRange=3
+sfr = "P2M1.P2M14_",             "SFR", 95, 1, base=16, bitRange=4
+sfr = "P2M1.P2M15_",             "SFR", 95, 1, base=16, bitRange=5
+sfr = "P2M1.P2M16_",             "SFR", 95, 1, base=16, bitRange=6
+sfr = "P2M1.P2M17_",             "SFR", 95, 1, base=16, bitRange=7
+sfr = "P2PU",                    "XData", FE12, 1, base=16, tooltip="Port 2 Pull up control register"
+sfr = "P2NCS",                   "XData", FE1A, 1, base=16, tooltip="Port 2 Schmidt trigger control register"
+sfr = "P3",                      "SFR", B0, 1, base=16, tooltip="Port 3"
+sfr = "P3.P3_0",                 "SFR", B0, 1, base=16, bitRange=0
+sfr = "P3.P3_1",                 "SFR", B0, 1, base=16, bitRange=1
+sfr = "P3.P3_2",                 "SFR", B0, 1, base=16, bitRange=2
+sfr = "P3.P3_3",                 "SFR", B0, 1, base=16, bitRange=3
+sfr = "P3.P3_4",                 "SFR", B0, 1, base=16, bitRange=4
+sfr = "P3.P3_5",                 "SFR", B0, 1, base=16, bitRange=5
+sfr = "P3.P3_6",                 "SFR", B0, 1, base=16, bitRange=6
+sfr = "P3.P3_7",                 "SFR", B0, 1, base=16, bitRange=7
+sfr = "P3M0",                    "SFR", B2, 1, base=16, tooltip="Port 3 output mode 0"
+sfr = "P3M0.P3M00_",             "SFR", B2, 1, base=16, bitRange=0
+sfr = "P3M0.P3M01_",             "SFR", B2, 1, base=16, bitRange=1
+sfr = "P3M0.P3M02_",             "SFR", B2, 1, base=16, bitRange=2
+sfr = "P3M0.P3M03_",             "SFR", B2, 1, base=16, bitRange=3
+sfr = "P3M0.P3M04_",             "SFR", B2, 1, base=16, bitRange=4
+sfr = "P3M0.P3M05_",             "SFR", B2, 1, base=16, bitRange=5
+sfr = "P3M0.P3M06_",             "SFR", B2, 1, base=16, bitRange=6
+sfr = "P3M0.P3M07_",             "SFR", B2, 1, base=16, bitRange=7
+sfr = "P3M1",                    "SFR", B1, 1, base=16, tooltip="Port 3 output mode 1"
+sfr = "P3M1.P3M10_",             "SFR", B1, 1, base=16, bitRange=0
+sfr = "P3M1.P3M11_",             "SFR", B1, 1, base=16, bitRange=1
+sfr = "P3M1.P3M12_",             "SFR", B1, 1, base=16, bitRange=2
+sfr = "P3M1.P3M13_",             "SFR", B1, 1, base=16, bitRange=3
+sfr = "P3M1.P3M14_",             "SFR", B1, 1, base=16, bitRange=4
+sfr = "P3M1.P3M15_",             "SFR", B1, 1, base=16, bitRange=5
+sfr = "P3M1.P3M16_",             "SFR", B1, 1, base=16, bitRange=6
+sfr = "P3M1.P3M17_",             "SFR", B1, 1, base=16, bitRange=7
+sfr = "P3PU",                    "XData", FE13, 1, base=16, tooltip="Port 3 Pull up control register"
+sfr = "P3NCS",                   "XData", FE1B, 1, base=16, tooltip="Port 3 Schmidt trigger control register"
+sfr = "P4",                      "SFR", C0, 1, base=16, tooltip="Port 4"
+sfr = "P4.P4_0",                 "SFR", C0, 1, base=16, bitRange=0
+sfr = "P4.P4_1",                 "SFR", C0, 1, base=16, bitRange=1
+sfr = "P4.P4_2",                 "SFR", C0, 1, base=16, bitRange=2
+sfr = "P4.P4_3",                 "SFR", C0, 1, base=16, bitRange=3
+sfr = "P4.P4_4",                 "SFR", C0, 1, base=16, bitRange=4
+sfr = "P4.P4_5",                 "SFR", C0, 1, base=16, bitRange=5
+sfr = "P4.P4_6",                 "SFR", C0, 1, base=16, bitRange=6
+sfr = "P4.P4_7",                 "SFR", C0, 1, base=16, bitRange=7
+sfr = "P4M0",                    "SFR", B4, 1, base=16, tooltip="Port 4 output mode 0"
+sfr = "P4M0.P4M00_",             "SFR", B4, 1, base=16, bitRange=0
+sfr = "P4M0.P4M01_",             "SFR", B4, 1, base=16, bitRange=1
+sfr = "P4M0.P4M02_",             "SFR", B4, 1, base=16, bitRange=2
+sfr = "P4M0.P4M03_",             "SFR", B4, 1, base=16, bitRange=3
+sfr = "P4M0.P4M04_",             "SFR", B4, 1, base=16, bitRange=4
+sfr = "P4M0.P4M05_",             "SFR", B4, 1, base=16, bitRange=5
+sfr = "P4M0.P4M06_",             "SFR", B4, 1, base=16, bitRange=6
+sfr = "P4M0.P4M07_",             "SFR", B4, 1, base=16, bitRange=7
+sfr = "P4M1",                    "SFR", B3, 1, base=16, tooltip="Port 4 output mode 1"
+sfr = "P4M1.P4M10_",             "SFR", B3, 1, base=16, bitRange=0
+sfr = "P4M1.P4M11_",             "SFR", B3, 1, base=16, bitRange=1
+sfr = "P4M1.P4M12_",             "SFR", B3, 1, base=16, bitRange=2
+sfr = "P4M1.P4M13_",             "SFR", B3, 1, base=16, bitRange=3
+sfr = "P4M1.P4M14_",             "SFR", B3, 1, base=16, bitRange=4
+sfr = "P4M1.P4M15_",             "SFR", B3, 1, base=16, bitRange=5
+sfr = "P4M1.P4M16_",             "SFR", B3, 1, base=16, bitRange=6
+sfr = "P4M1.P4M17_",             "SFR", B3, 1, base=16, bitRange=7
+sfr = "P4PU",                    "XData", FE14, 1, base=16, tooltip="Port 4 Pull up control register"
+sfr = "P4NCS",                   "XData", FE1C, 1, base=16, tooltip="Port 4 Schmidt trigger control register"
+sfr = "P5",                      "SFR", C8, 1, base=16, tooltip="Port 5"
+sfr = "P5.P5_0",                 "SFR", C8, 1, base=16, bitRange=0
+sfr = "P5.P5_1",                 "SFR", C8, 1, base=16, bitRange=1
+sfr = "P5.P5_2",                 "SFR", C8, 1, base=16, bitRange=2
+sfr = "P5.P5_3",                 "SFR", C8, 1, base=16, bitRange=3
+sfr = "P5.P5_4",                 "SFR", C8, 1, base=16, bitRange=4
+sfr = "P5.P5_5",                 "SFR", C8, 1, base=16, bitRange=5
+sfr = "P5.P5_6",                 "SFR", C8, 1, base=16, bitRange=6
+sfr = "P5.P5_7",                 "SFR", C8, 1, base=16, bitRange=7
+sfr = "P5M0",                    "SFR", CA, 1, base=16, tooltip="Port 5 output mode 0"
+sfr = "P5M0.P5M00_",             "SFR", CA, 1, base=16, bitRange=0
+sfr = "P5M0.P5M01_",             "SFR", CA, 1, base=16, bitRange=1
+sfr = "P5M0.P5M02_",             "SFR", CA, 1, base=16, bitRange=2
+sfr = "P5M0.P5M03_",             "SFR", CA, 1, base=16, bitRange=3
+sfr = "P5M0.P5M04_",             "SFR", CA, 1, base=16, bitRange=4
+sfr = "P5M0.P5M05_",             "SFR", CA, 1, base=16, bitRange=5
+sfr = "P5M0.P5M06_",             "SFR", CA, 1, base=16, bitRange=6
+sfr = "P5M0.P5M07_",             "SFR", CA, 1, base=16, bitRange=7
+sfr = "P5M1",                    "SFR", C9, 1, base=16, tooltip="Port 5 output mode 1"
+sfr = "P5M1.P5M10_",             "SFR", C9, 1, base=16, bitRange=0
+sfr = "P5M1.P5M11_",             "SFR", C9, 1, base=16, bitRange=1
+sfr = "P5M1.P5M12_",             "SFR", C9, 1, base=16, bitRange=2
+sfr = "P5M1.P5M13_",             "SFR", C9, 1, base=16, bitRange=3
+sfr = "P5M1.P5M14_",             "SFR", C9, 1, base=16, bitRange=4
+sfr = "P5M1.P5M15_",             "SFR", C9, 1, base=16, bitRange=5
+sfr = "P5M1.P5M16_",             "SFR", C9, 1, base=16, bitRange=6
+sfr = "P5M1.P5M17_",             "SFR", C9, 1, base=16, bitRange=7
+sfr = "P5PU",                    "XData", FE15, 1, base=16, tooltip="Port 5 Pull up control register"
+sfr = "P5NCS",                   "XData", FE1D, 1, base=16, tooltip="Port 5 Schmidt trigger control register"
+sfr = "P6",                      "SFR", E8, 1, base=16, tooltip="Port 6"
+sfr = "P6.P6_0",                 "SFR", E8, 1, base=16, bitRange=0
+sfr = "P6.P6_1",                 "SFR", E8, 1, base=16, bitRange=1
+sfr = "P6.P6_2",                 "SFR", E8, 1, base=16, bitRange=2
+sfr = "P6.P6_3",                 "SFR", E8, 1, base=16, bitRange=3
+sfr = "P6.P6_4",                 "SFR", E8, 1, base=16, bitRange=4
+sfr = "P6.P6_5",                 "SFR", E8, 1, base=16, bitRange=5
+sfr = "P6.P6_6",                 "SFR", E8, 1, base=16, bitRange=6
+sfr = "P6.P6_7",                 "SFR", E8, 1, base=16, bitRange=7
+sfr = "P6M0",                    "SFR", CC, 1, base=16, tooltip="Port 6 output mode 0"
+sfr = "P6M0.P6M00_",             "SFR", CC, 1, base=16, bitRange=0
+sfr = "P6M0.P6M01_",             "SFR", CC, 1, base=16, bitRange=1
+sfr = "P6M0.P6M02_",             "SFR", CC, 1, base=16, bitRange=2
+sfr = "P6M0.P6M03_",             "SFR", CC, 1, base=16, bitRange=3
+sfr = "P6M0.P6M04_",             "SFR", CC, 1, base=16, bitRange=4
+sfr = "P6M0.P6M05_",             "SFR", CC, 1, base=16, bitRange=5
+sfr = "P6M0.P6M06_",             "SFR", CC, 1, base=16, bitRange=6
+sfr = "P6M0.P6M07_",             "SFR", CC, 1, base=16, bitRange=7
+sfr = "P6M1",                    "SFR", CB, 1, base=16, tooltip="Port 6 output mode 1"
+sfr = "P6M1.P6M10_",             "SFR", CB, 1, base=16, bitRange=0
+sfr = "P6M1.P6M11_",             "SFR", CB, 1, base=16, bitRange=1
+sfr = "P6M1.P6M12_",             "SFR", CB, 1, base=16, bitRange=2
+sfr = "P6M1.P6M13_",             "SFR", CB, 1, base=16, bitRange=3
+sfr = "P6M1.P6M14_",             "SFR", CB, 1, base=16, bitRange=4
+sfr = "P6M1.P6M15_",             "SFR", CB, 1, base=16, bitRange=5
+sfr = "P6M1.P6M16_",             "SFR", CB, 1, base=16, bitRange=6
+sfr = "P6M1.P6M17_",             "SFR", CB, 1, base=16, bitRange=7
+sfr = "P6PU",                    "XData", FE16, 1, base=16, tooltip="Port 7 Pull up control register"
+sfr = "P6NCS",                   "XData", FE1E, 1, base=16, tooltip="Port 7 Schmidt trigger control register"
+sfr = "P7",                      "SFR", F8, 1, base=16, tooltip="Port 7"
+sfr = "P7.P7_0",                 "SFR", F8, 1, base=16, bitRange=0
+sfr = "P7.P7_1",                 "SFR", F8, 1, base=16, bitRange=1
+sfr = "P7.P7_2",                 "SFR", F8, 1, base=16, bitRange=2
+sfr = "P7.P7_3",                 "SFR", F8, 1, base=16, bitRange=3
+sfr = "P7.P7_4",                 "SFR", F8, 1, base=16, bitRange=4
+sfr = "P7.P7_5",                 "SFR", F8, 1, base=16, bitRange=5
+sfr = "P7.P7_6",                 "SFR", F8, 1, base=16, bitRange=6
+sfr = "P7.P7_7",                 "SFR", F8, 1, base=16, bitRange=7
+sfr = "P7M0",                    "SFR", E2, 1, base=16, tooltip="Port 7 output mode 0"
+sfr = "P7M0.P7M00_",             "SFR", E2, 1, base=16, bitRange=0
+sfr = "P7M0.P7M01_",             "SFR", E2, 1, base=16, bitRange=1
+sfr = "P7M0.P7M02_",             "SFR", E2, 1, base=16, bitRange=2
+sfr = "P7M0.P7M03_",             "SFR", E2, 1, base=16, bitRange=3
+sfr = "P7M0.P7M04_",             "SFR", E2, 1, base=16, bitRange=4
+sfr = "P7M0.P7M05_",             "SFR", E2, 1, base=16, bitRange=5
+sfr = "P7M0.P7M06_",             "SFR", E2, 1, base=16, bitRange=6
+sfr = "P7M0.P7M07_",             "SFR", E2, 1, base=16, bitRange=7
+sfr = "P7M1",                    "SFR", E1, 1, base=16, tooltip="Port 7 output mode 1"
+sfr = "P7M1.P7M10_",             "SFR", E1, 1, base=16, bitRange=0
+sfr = "P7M1.P7M11_",             "SFR", E1, 1, base=16, bitRange=1
+sfr = "P7M1.P7M12_",             "SFR", E1, 1, base=16, bitRange=2
+sfr = "P7M1.P7M13_",             "SFR", E1, 1, base=16, bitRange=3
+sfr = "P7M1.P7M14_",             "SFR", E1, 1, base=16, bitRange=4
+sfr = "P7M1.P7M15_",             "SFR", E1, 1, base=16, bitRange=5
+sfr = "P7M1.P7M16_",             "SFR", E1, 1, base=16, bitRange=6
+sfr = "P7M1.P7M17_",             "SFR", E1, 1, base=16, bitRange=7
+sfr = "P7PU",                    "XData", FE17, 1, base=16, tooltip="Port 7 Pull up control register"
+sfr = "P7NCS",                   "XData", FE1F, 1, base=16, tooltip="Port 7 Schmidt trigger control register"
+
+;; C51 core registers group
+;; ------------------------------------------------------------
+sfr = "DPL",                     "SFR", 82, 1, base=16, tooltip="Data Pointer 0 Low"
+sfr = "DPH",                     "SFR", 83, 1, base=16, tooltip="Data Pointer 0 High"
+sfr = "DPS",                     "SFR", E3, 1, base=16, tooltip="Data Pointer Select"
+sfr = "DPS.SEL",                 "SFR", E3, 1, base=16, bitRange=0
+sfr = "DPS.------",              "SFR", E3, 1, base=16, bitRange=1
+sfr = "DPS.-----",               "SFR", E3, 1, base=16, bitRange=2
+sfr = "DPS.AU0",                 "SFR", E3, 1, base=16, bitRange=3
+sfr = "DPS.AU1",                 "SFR", E3, 1, base=16, bitRange=4
+sfr = "DPS.TSL",                 "SFR", E3, 1, base=16, bitRange=5
+sfr = "DPS.ID0",                 "SFR", E3, 1, base=16, bitRange=6
+sfr = "DPS.ID1",                 "SFR", E3, 1, base=16, bitRange=7
+sfr = "TA",                      "SFR", AE, 1, base=16, tooltip="Data Pointer sequence control"
+
+;; Power and clock control registers group
+;; ------------------------------------------------------------
+sfr = "PCON",                    "SFR", 87, 1, base=16, tooltip="Power Control"
+sfr = "PCON.IDL",                "SFR", 87, 1, base=16, bitRange=0
+sfr = "PCON.PD",                 "SFR", 87, 1, base=16, bitRange=1
+sfr = "PCON.GF0",                "SFR", 87, 1, base=16, bitRange=2
+sfr = "PCON.GF1",                "SFR", 87, 1, base=16, bitRange=3
+sfr = "PCON.POF",                "SFR", 87, 1, base=16, bitRange=4
+sfr = "PCON.LVDF",               "SFR", 87, 1, base=16, bitRange=5
+sfr = "PCON.SMOD0",              "SFR", 87, 1, base=16, bitRange=6
+sfr = "PCON.SMOD",               "SFR", 87, 1, base=16, bitRange=7
+sfr = "BUS_SPEED",               "SFR", A1, 1, base=16, tooltip="Bus speed Control register"
+sfr = "BUS_SPEED.SPEED0",        "SFR", A1, 1, base=16, bitRange=0
+sfr = "BUS_SPEED.SPEED1",        "SFR", A1, 1, base=16, bitRange=1
+sfr = "BUS_SPEED.------",        "SFR", A1, 1, base=16, bitRange=2
+sfr = "BUS_SPEED.-----",         "SFR", A1, 1, base=16, bitRange=3
+sfr = "BUS_SPEED.----",          "SFR", A1, 1, base=16, bitRange=4
+sfr = "BUS_SPEED.---",           "SFR", A1, 1, base=16, bitRange=5
+sfr = "BUS_SPEED.RW_S0",         "SFR", A1, 1, base=16, bitRange=6
+sfr = "BUS_SPEED.RW_S1",         "SFR", A1, 1, base=16, bitRange=7
+sfr = "P_SW1",                   "SFR", A2, 1, base=16, tooltip="Peripheral port switch register1"
+sfr = "P_SW1.-----",             "SFR", A2, 1, base=16, bitRange=0
+sfr = "P_SW1.----",              "SFR", A2, 1, base=16, bitRange=1
+sfr = "P_SW1.SPI_S0",            "SFR", A2, 1, base=16, bitRange=2
+sfr = "P_SW1.SPI_S1",            "SFR", A2, 1, base=16, bitRange=3
+sfr = "P_SW1.CCP_S0",            "SFR", A2, 1, base=16, bitRange=4
+sfr = "P_SW1.CCP_S1",            "SFR", A2, 1, base=16, bitRange=5
+sfr = "P_SW1.S1_S0",             "SFR", A2, 1, base=16, bitRange=6
+sfr = "P_SW1.S1_S1",             "SFR", A2, 1, base=16, bitRange=7
+sfr = "P_SW2",                   "SFR", BA, 1, base=16, tooltip="Peripheral port switch register2"
+sfr = "P_SW2.S2_S",              "SFR", BA, 1, base=16, bitRange=0
+sfr = "P_SW2.S3_S",              "SFR", BA, 1, base=16, bitRange=1
+sfr = "P_SW2.S4_S",              "SFR", BA, 1, base=16, bitRange=2
+sfr = "P_SW2.CMPO_S",            "SFR", BA, 1, base=16, bitRange=3
+sfr = "P_SW2.I2C_S0",            "SFR", BA, 1, base=16, bitRange=4
+sfr = "P_SW2.I2C_S1",            "SFR", BA, 1, base=16, bitRange=5
+sfr = "P_SW2.------",            "SFR", BA, 1, base=16, bitRange=6
+sfr = "P_SW2.EAXFR",             "SFR", BA, 1, base=16, bitRange=7
+sfr = "VOCTRL",                  "SFR", BB, 1, base=16, tooltip="Voltage control register"
+sfr = "VOCTRL.-------",          "SFR", BB, 1, base=16, bitRange=0
+sfr = "VOCTRL.------",           "SFR", BB, 1, base=16, bitRange=1
+sfr = "VOCTRL.-----",            "SFR", BB, 1, base=16, bitRange=2
+sfr = "VOCTRL.----",             "SFR", BB, 1, base=16, bitRange=3
+sfr = "VOCTRL.---",              "SFR", BB, 1, base=16, bitRange=4
+sfr = "VOCTRL.--",               "SFR", BB, 1, base=16, bitRange=5
+sfr = "VOCTRL.-",                "SFR", BB, 1, base=16, bitRange=6
+sfr = "VOCTRL.SCC",              "SFR", BB, 1, base=16, bitRange=7
+sfr = "RSTCFG",                  "SFR", FF, 1, base=16, tooltip="Voltage control register"
+sfr = "RSTCFG.LVDS0",            "SFR", FF, 1, base=16, bitRange=0
+sfr = "RSTCFG.LVDS1",            "SFR", FF, 1, base=16, bitRange=1
+sfr = "RSTCFG.------",           "SFR", FF, 1, base=16, bitRange=2
+sfr = "RSTCFG.-----",            "SFR", FF, 1, base=16, bitRange=3
+sfr = "RSTCFG.P54RST",           "SFR", FF, 1, base=16, bitRange=4
+sfr = "RSTCFG.----",             "SFR", FF, 1, base=16, bitRange=5
+sfr = "RSTCFG.ENLVR",            "SFR", FF, 1, base=16, bitRange=6
+sfr = "RSTCFG.--",               "SFR", FF, 1, base=16, bitRange=7
+sfr = "CKSEL",                   "XData", FE00, 1, base=16, tooltip="Clock select register"
+sfr = "CKSEL.MCKSEL0",           "XData", FE00, 1, base=16, bitRange=0
+sfr = "CKSEL.MCKSEL1",           "XData", FE00, 1, base=16, bitRange=1
+sfr = "CKSEL.------",            "XData", FE00, 1, base=16, bitRange=2
+sfr = "CKSEL.MCLOK_S",           "XData", FE00, 1, base=16, bitRange=3
+sfr = "CKSEL.MCLKODIV0",         "XData", FE00, 1, base=16, bitRange=4
+sfr = "CKSEL.MCLKODIV1",         "XData", FE00, 1, base=16, bitRange=5
+sfr = "CKSEL.MCLKODIV2",         "XData", FE00, 1, base=16, bitRange=6
+sfr = "CKSEL.MCLKODIV3",         "XData", FE00, 1, base=16, bitRange=7
+sfr = "CLKDIV",                  "XData", FE01, 1, base=16, tooltip="Clock division register"
+sfr = "IRC24MCR",                "XData", FE02, 1, base=16, tooltip="24M RC control register"
+sfr = "IRC24MCR.IRC24MST",       "XData", FE02, 1, base=16, bitRange=0
+sfr = "IRC24MCR.------",         "XData", FE02, 1, base=16, bitRange=1
+sfr = "IRC24MCR.-----",          "XData", FE02, 1, base=16, bitRange=2
+sfr = "IRC24MCR.----",           "XData", FE02, 1, base=16, bitRange=3
+sfr = "IRC24MCR.---",            "XData", FE02, 1, base=16, bitRange=4
+sfr = "IRC24MCR.--",             "XData", FE02, 1, base=16, bitRange=5
+sfr = "IRC24MCR.-",              "XData", FE02, 1, base=16, bitRange=6
+sfr = "IRC24MCR.ENIRC24M",       "XData", FE02, 1, base=16, bitRange=7
+sfr = "XOSCCR",                  "XData", FE03, 1, base=16, tooltip="External crystal oscillator control register"
+sfr = "XOSCCR.XOSCST",           "XData", FE03, 1, base=16, bitRange=0
+sfr = "XOSCCR.------",           "XData", FE03, 1, base=16, bitRange=1
+sfr = "XOSCCR.-----",            "XData", FE03, 1, base=16, bitRange=2
+sfr = "XOSCCR.----",             "XData", FE03, 1, base=16, bitRange=3
+sfr = "XOSCCR.---",              "XData", FE03, 1, base=16, bitRange=4
+sfr = "XOSCCR.--",               "XData", FE03, 1, base=16, bitRange=5
+sfr = "XOSCCR.XITYPE",           "XData", FE03, 1, base=16, bitRange=6
+sfr = "XOSCCR.ENXOSC",           "XData", FE03, 1, base=16, bitRange=7
+sfr = "IRC32KCR",                "XData", FE04, 1, base=16, tooltip="24M RC control register"
+sfr = "IRC32KCR.IRC32KST",       "XData", FE04, 1, base=16, bitRange=0
+sfr = "IRC32KCR.------",         "XData", FE04, 1, base=16, bitRange=1
+sfr = "IRC32KCR.-----",          "XData", FE04, 1, base=16, bitRange=2
+sfr = "IRC32KCR.----",           "XData", FE04, 1, base=16, bitRange=3
+sfr = "IRC32KCR.---",            "XData", FE04, 1, base=16, bitRange=4
+sfr = "IRC32KCR.--",             "XData", FE04, 1, base=16, bitRange=5
+sfr = "IRC32KCR.-",              "XData", FE04, 1, base=16, bitRange=6
+sfr = "IRC32KCR.ENIRC32K",       "XData", FE04, 1, base=16, bitRange=7
+sfr = "LIRTRIM",                 "SFR", 9E, 1, base=16, tooltip="IRC frequency coarse tuning register"
+sfr = "LIRTRIM.LIRTRIM0",        "SFR", 9E, 1, base=16, bitRange=0
+sfr = "LIRTRIM.LIRTRIM1",        "SFR", 9E, 1, base=16, bitRange=1
+sfr = "LIRTRIM.-------",         "SFR", 9E, 1, base=16, bitRange=2
+sfr = "LIRTRIM.------",          "SFR", 9E, 1, base=16, bitRange=3
+sfr = "LIRTRIM.-----",           "SFR", 9E, 1, base=16, bitRange=4
+sfr = "LIRTRIM.----",            "SFR", 9E, 1, base=16, bitRange=5
+sfr = "LIRTRIM.---",             "SFR", 9E, 1, base=16, bitRange=6
+sfr = "LIRTRIM.--",              "SFR", 9E, 1, base=16, bitRange=7
+sfr = "IRTRIM",                  "SFR", 9F, 1, base=16, tooltip="IRC frequency fine tuning register"
+
+
+;; Serial I/O port registers group
+;; ------------------------------------------------------------
+sfr = "SCON",                    "SFR", 98, 1, base=16, tooltip="Serial 1 Control"
+sfr = "SCON.RI",                 "SFR", 98, 1, base=16, bitRange=0
+sfr = "SCON.TI",                 "SFR", 98, 1, base=16, bitRange=1
+sfr = "SCON.RB8",                "SFR", 98, 1, base=16, bitRange=2
+sfr = "SCON.TB8",                "SFR", 98, 1, base=16, bitRange=3
+sfr = "SCON.REN",                "SFR", 98, 1, base=16, bitRange=4
+sfr = "SCON.SM2",                "SFR", 98, 1, base=16, bitRange=5
+sfr = "SCON.SM1",                "SFR", 98, 1, base=16, bitRange=6
+sfr = "SCON.SM0",                "SFR", 98, 1, base=16, bitRange=7
+sfr = "SBUF",                    "SFR", 99, 1, base=16, tooltip="Serial 1 Data Buffer"
+sfr = "SADDR",                   "SFR", A9, 1, base=16, tooltip="Serial 1 Slave Addr"
+sfr = "SADEN",                   "SFR", B9, 1, base=16, tooltip="Serial 1 Slave Addr Shield"
+
+sfr = "S2CON",                   "SFR", 9A, 1, base=16, tooltip="Serial 2 Control"
+sfr = "S2CON.S2RI",              "SFR", 9A, 1, base=16, bitRange=0
+sfr = "S2CON.S2TI",              "SFR", 9A, 1, base=16, bitRange=1
+sfr = "S2CON.S2RB8",             "SFR", 9A, 1, base=16, bitRange=2
+sfr = "S2CON.S2TB8",             "SFR", 9A, 1, base=16, bitRange=3
+sfr = "S2CON.S2REN",             "SFR", 9A, 1, base=16, bitRange=4
+sfr = "S2CON.S2SM2",             "SFR", 9A, 1, base=16, bitRange=5
+sfr = "S2CON.------",            "SFR", 9A, 1, base=16, bitRange=6
+sfr = "S2CON.S2M0",              "SFR", 9A, 1, base=16, bitRange=7
+sfr = "S2BUF",                   "SFR", 9B, 1, base=16, tooltip="Serial 2 Data Buffer"
+
+sfr = "S3CON",                   "SFR", AC, 1, base=16, tooltip="Serial 3 Control"
+sfr = "S3CON.S3RI",              "SFR", AC, 1, base=16, bitRange=0
+sfr = "S3CON.S3TI",              "SFR", AC, 1, base=16, bitRange=1
+sfr = "S3CON.S3RB8",             "SFR", AC, 1, base=16, bitRange=2
+sfr = "S3CON.S3TB8",             "SFR", AC, 1, base=16, bitRange=3
+sfr = "S3CON.S3REN",             "SFR", AC, 1, base=16, bitRange=4
+sfr = "S3CON.S3SM2",             "SFR", AC, 1, base=16, bitRange=5
+sfr = "S3CON.S3ST3",             "SFR", AC, 1, base=16, bitRange=6
+sfr = "S3CON.S3SM0",             "SFR", AC, 1, base=16, bitRange=7
+sfr = "S3BUF",                   "SFR", AD, 1, base=16, tooltip="Serial3 Data Buffer"
+
+sfr = "S4CON",                   "SFR", 84, 1, base=16, tooltip="Serial 4 Control"
+sfr = "S4CON.S4RI",              "SFR", 84, 1, base=16, bitRange=0
+sfr = "S4CON.S4TI",              "SFR", 84, 1, base=16, bitRange=1
+sfr = "S4CON.S4RB8",             "SFR", 84, 1, base=16, bitRange=2
+sfr = "S4CON.S4TB8",             "SFR", 84, 1, base=16, bitRange=3
+sfr = "S4CON.S4REN",             "SFR", 84, 1, base=16, bitRange=4
+sfr = "S4CON.S4SM2",             "SFR", 84, 1, base=16, bitRange=5
+sfr = "S4CON.S4ST4",             "SFR", 84, 1, base=16, bitRange=6
+sfr = "S4CON.S4SM0",             "SFR", 84, 1, base=16, bitRange=7
+sfr = "S4BUF",                   "SFR", 85, 1, base=16, tooltip="Serial 4 Data Buffer"
+
+
+;; ADC group
+;; ------------------------------------------------------------
+sfr = "ADC_CONTR",               "SFR", BC, 1, base=16, tooltip="A/D control register"
+sfr = "ADC_CONTR.ADC_CHS0",      "SFR", BC, 1, base=16, bitRange=0
+sfr = "ADC_CONTR.ADC_CHS1",      "SFR", BC, 1, base=16, bitRange=1
+sfr = "ADC_CONTR.ADC_CHS2",      "SFR", BC, 1, base=16, bitRange=2
+sfr = "ADC_CONTR.ADC_CHS3",      "SFR", BC, 1, base=16, bitRange=3
+sfr = "ADC_CONTR.------",        "SFR", BC, 1, base=16, bitRange=4
+sfr = "ADC_CONTR.ADC_FLAG",      "SFR", BC, 1, base=16, bitRange=5
+sfr = "ADC_CONTR.ADC_START",     "SFR", BC, 1, base=16, bitRange=6
+sfr = "ADC_CONTR.ADC_POWER",     "SFR", BC, 1, base=16, bitRange=7
+sfr = "ADC_RES",                 "SFR", BD, 1, base=16, tooltip="A/D result high"
+sfr = "ADC_RESL",                "SFR", BE, 1, base=16, tooltip="A/D result low"
+sfr = "ADCCFG",                  "SFR", DE, 1, base=16, tooltip="A/D config register"
+sfr = "ADCCFG.SPEED0",           "SFR", DE, 1, base=16, bitRange=0
+sfr = "ADCCFG.SPEED1",           "SFR", DE, 1, base=16, bitRange=1
+sfr = "ADCCFG.SPEED2",           "SFR", DE, 1, base=16, bitRange=2
+sfr = "ADCCFG.SPEED3",           "SFR", DE, 1, base=16, bitRange=3
+sfr = "ADCCFG.------",           "SFR", DE, 1, base=16, bitRange=4
+sfr = "ADCCFG.RESFMT",           "SFR", DE, 1, base=16, bitRange=5
+sfr = "ADCCFG.-----",            "SFR", DE, 1, base=16, bitRange=6
+sfr = "ADCCFG.----",             "SFR", DE, 1, base=16, bitRange=7
+
+;; SPI group
+;; ------------------------------------------------------------
+sfr = "SPSTAT",                  "SFR", CD, 1, base=16, tooltip="SPI status register"
+sfr = "SPSTAT.------",           "SFR", CD, 1, base=16, bitRange=0
+sfr = "SPSTAT.-----",            "SFR", CD, 1, base=16, bitRange=1
+sfr = "SPSTAT.----",             "SFR", CD, 1, base=16, bitRange=2
+sfr = "SPSTAT.---",              "SFR", CD, 1, base=16, bitRange=3
+sfr = "SPSTAT.--",               "SFR", CD, 1, base=16, bitRange=4
+sfr = "SPSTAT.-",                "SFR", CD, 1, base=16, bitRange=5
+sfr = "SPSTAT.WCOL",             "SFR", CD, 1, base=16, bitRange=6
+sfr = "SPSTAT.SPIF",             "SFR", CD, 1, base=16, bitRange=7
+sfr = "SPCTL",                   "SFR", CE, 1, base=16, tooltip="SPI control register"
+sfr = "SPCTL.SPR0",              "SFR", CE, 1, base=16, bitRange=0
+sfr = "SPCTL.SPR1",              "SFR", CE, 1, base=16, bitRange=1
+sfr = "SPCTL.CPHA",              "SFR", CE, 1, base=16, bitRange=2
+sfr = "SPCTL.CPOL",              "SFR", CE, 1, base=16, bitRange=3
+sfr = "SPCTL.MSTR",              "SFR", CE, 1, base=16, bitRange=4
+sfr = "SPCTL.DORD",              "SFR", CE, 1, base=16, bitRange=5
+sfr = "SPCTL.SPEN",              "SFR", CE, 1, base=16, bitRange=6
+sfr = "SPCTL.SSIG",              "SFR", CE, 1, base=16, bitRange=7
+sfr = "SPDAT",                   "SFR", CF, 1, base=16, tooltip="SPI data register"
+
+;; IAP/ISP Program Flash group
+;; ------------------------------------------------------------
+sfr = "IAP_DATA",                "SFR", C2, 1, base=16, tooltip="IAP data register"
+sfr = "IAP_ADDRH",               "SFR", C3, 1, base=16, tooltip="IAP addr high"
+sfr = "IAP_ADDRL",               "SFR", C4, 1, base=16, tooltip="IAP addr low"
+sfr = "IAP_CMD",                 "SFR", C5, 1, base=16, tooltip="IAP command"
+sfr = "IAP_CMD.CMD0",            "SFR", C5, 1, base=16, bitRange=0
+sfr = "IAP_CMD.CMD1",            "SFR", C5, 1, base=16, bitRange=1
+sfr = "IAP_CMD.------",          "SFR", C5, 1, base=16, bitRange=2
+sfr = "IAP_CMD.-----",           "SFR", C5, 1, base=16, bitRange=3
+sfr = "IAP_CMD.----",            "SFR", C5, 1, base=16, bitRange=4
+sfr = "IAP_CMD.---",             "SFR", C5, 1, base=16, bitRange=5
+sfr = "IAP_CMD.--",              "SFR", C5, 1, base=16, bitRange=6
+sfr = "IAP_CMD.-",               "SFR", C5, 1, base=16, bitRange=7
+sfr = "IAP_TRIG",                "SFR", C6, 1, base=16, tooltip="IAP trigger"
+sfr = "IAP_CONTR",               "SFR", C7, 1, base=16, tooltip="IAP control"
+sfr = "IAP_CONTR.IAP_WT0",       "SFR", C7, 1, base=16, bitRange=0
+sfr = "IAP_CONTR.IAP_WT1",       "SFR", C7, 1, base=16, bitRange=1
+sfr = "IAP_CONTR.IAP_WT2",       "SFR", C7, 1, base=16, bitRange=2
+sfr = "IAP_CONTR.------",        "SFR", C7, 1, base=16, bitRange=3
+sfr = "IAP_CONTR.CMD_FAIL",      "SFR", C7, 1, base=16, bitRange=4
+sfr = "IAP_CONTR.SWRST",         "SFR", C7, 1, base=16, bitRange=5
+sfr = "IAP_CONTR.SWBS",          "SFR", C7, 1, base=16, bitRange=6
+sfr = "IAP_CONTR.IAPEN",         "SFR", C7, 1, base=16, bitRange=7
+
+
+;; Watchdog Timer group
+;; ------------------------------------------------------------
+sfr = "WDT_CONTR",               "SFR", C1, 1, base=16, tooltip="Watchdog control register"
+sfr = "WDT_CONTR.WDT_PS0",       "SFR", C1, 1, base=16, bitRange=0
+sfr = "WDT_CONTR.WDT_PS1",       "SFR", C1, 1, base=16, bitRange=1
+sfr = "WDT_CONTR.WDT_PS2",       "SFR", C1, 1, base=16, bitRange=2
+sfr = "WDT_CONTR.IDL_WDT",       "SFR", C1, 1, base=16, bitRange=3
+sfr = "WDT_CONTR.CLR_WDT",       "SFR", C1, 1, base=16, bitRange=4
+sfr = "WDT_CONTR.EN_WDT",        "SFR", C1, 1, base=16, bitRange=5
+sfr = "WDT_CONTR.------",        "SFR", C1, 1, base=16, bitRange=6
+sfr = "WDT_CONTR.WDT_FLAG",      "SFR", C1, 1, base=16, bitRange=7
+
+
+;; Timers group
+;; ------------------------------------------------------------
+sfr = "TCON",                    "SFR", 88, 1, base=16, tooltip="Timer Control"
+sfr = "TCON.IT0",                "SFR", 88, 1, base=16, bitRange=0
+sfr = "TCON.IE0",                "SFR", 88, 1, base=16, bitRange=1
+sfr = "TCON.IT1",                "SFR", 88, 1, base=16, bitRange=2
+sfr = "TCON.IE1",                "SFR", 88, 1, base=16, bitRange=3
+sfr = "TCON.TR0",                "SFR", 88, 1, base=16, bitRange=4
+sfr = "TCON.TF0",                "SFR", 88, 1, base=16, bitRange=5
+sfr = "TCON.TR1",                "SFR", 88, 1, base=16, bitRange=6
+sfr = "TCON.TF1",                "SFR", 88, 1, base=16, bitRange=7
+sfr = "TMOD",                    "SFR", 89, 1, base=16, tooltip="Timer 0 and 1 mode"
+sfr = "TMOD.T0_M0",              "SFR", 89, 1, base=16, bitRange=0
+sfr = "TMOD.T0_M1",              "SFR", 89, 1, base=16, bitRange=1
+sfr = "TMOD.T0_CT",              "SFR", 89, 1, base=16, bitRange=2
+sfr = "TMOD.T0_GATE",            "SFR", 89, 1, base=16, bitRange=3
+sfr = "TMOD.T1_M0",              "SFR", 89, 1, base=16, bitRange=4
+sfr = "TMOD.T1_M1",              "SFR", 89, 1, base=16, bitRange=5
+sfr = "TMOD.T1_CT",              "SFR", 89, 1, base=16, bitRange=6
+sfr = "TMOD.T1_GATE",            "SFR", 89, 1, base=16, bitRange=7
+sfr = "TL0",                     "SFR", 8A, 1, base=16, tooltip="Timer0 Low"
+sfr = "TL1",                     "SFR", 8B, 1, base=16, tooltip="Timer1 Low"
+sfr = "TH0",                     "SFR", 8C, 1, base=16, tooltip="Timer0 High"
+sfr = "TH1",                     "SFR", 8D, 1, base=16, tooltip="Timer1 High"
+sfr = "T4T3M",                   "SFR", D1, 1, base=16, tooltip="Timer4/3 Control"
+sfr = "T4T3M.T3CLKO",            "SFR", D1, 1, base=16, bitRange=0
+sfr = "T4T3M.T3x12",             "SFR", D1, 1, base=16, bitRange=1
+sfr = "T4T3M.T3_C/T",            "SFR", D1, 1, base=16, bitRange=2
+sfr = "T4T3M.T3R",               "SFR", D1, 1, base=16, bitRange=3
+sfr = "T4T3M.T4CLKO",            "SFR", D1, 1, base=16, bitRange=4
+sfr = "T4T3M.T4x12",             "SFR", D1, 1, base=16, bitRange=5
+sfr = "T4T3M.T4_C/T",            "SFR", D1, 1, base=16, bitRange=6
+sfr = "T4T3M.T4R",               "SFR", D1, 1, base=16, bitRange=7
+sfr = "T4H",                     "SFR", D2, 1, base=16, tooltip="Timer4 High"
+sfr = "T4L",                     "SFR", D3, 1, base=16, tooltip="Timer4 Low"
+sfr = "T3H",                     "SFR", D4, 1, base=16, tooltip="Timer3 High"
+sfr = "T3L",                     "SFR", D5, 1, base=16, tooltip="Timer3 Low"
+sfr = "T2H",                     "SFR", D6, 1, base=16, tooltip="Timer2 High"
+sfr = "T2L",                     "SFR", D7, 1, base=16, tooltip="Timer2 Low"
+sfr = "WKTCL",                   "SFR", AA, 1, base=16, tooltip="Wake up Timer Low"
+sfr = "WKTCH",                   "SFR", AB, 1, base=16, tooltip="Wake up Timer High"
+sfr = "WKTCH.-------",           "SFR", AB, 1, base=16, bitRange=0
+sfr = "WKTCH.------",            "SFR", AB, 1, base=16, bitRange=1
+sfr = "WKTCH.-----",             "SFR", AB, 1, base=16, bitRange=2
+sfr = "WKTCH.----",              "SFR", AB, 1, base=16, bitRange=3
+sfr = "WKTCH.---",               "SFR", AB, 1, base=16, bitRange=4
+sfr = "WKTCH.--",                "SFR", AB, 1, base=16, bitRange=5
+sfr = "WKTCH.-",                 "SFR", AB, 1, base=16, bitRange=6
+sfr = "WKTCH.WKTEN",             "SFR", AB, 1, base=16, bitRange=7
+sfr = "AUXR",                    "SFR", 8E, 1, base=16, tooltip="Auxiliary register"
+sfr = "AUXR.S1ST2",              "SFR", 8E, 1, base=16, bitRange=0
+sfr = "AUXR.EXTRAM",             "SFR", 8E, 1, base=16, bitRange=1
+sfr = "AUXR.T2x12",              "SFR", 8E, 1, base=16, bitRange=2
+sfr = "AUXR.T2_C/T",             "SFR", 8E, 1, base=16, bitRange=3
+sfr = "AUXR.T2R",                "SFR", 8E, 1, base=16, bitRange=4
+sfr = "AUXR.UART_M0x6",          "SFR", 8E, 1, base=16, bitRange=5
+sfr = "AUXR.T1x12",              "SFR", 8E, 1, base=16, bitRange=6
+sfr = "AUXR.T0x12",              "SFR", 8E, 1, base=16, bitRange=7
+
+
+;; Interrupt group
+;; ------------------------------------------------------------
+sfr = "IE",                      "SFR", A8, 1, base=16, tooltip="interrupt enable resister"
+sfr = "IE.EX0",                  "SFR", A8, 1, base=16, bitRange=0
+sfr = "IE.ET0",                  "SFR", A8, 1, base=16, bitRange=1
+sfr = "IE.EX1",                  "SFR", A8, 1, base=16, bitRange=2
+sfr = "IE.ET1",                  "SFR", A8, 1, base=16, bitRange=3
+sfr = "IE.ES",                   "SFR", A8, 1, base=16, bitRange=4
+sfr = "IE.EADC",                 "SFR", A8, 1, base=16, bitRange=5
+sfr = "IE.ELVD",                 "SFR", A8, 1, base=16, bitRange=6
+sfr = "IE.EA",                   "SFR", A8, 1, base=16, bitRange=7
+sfr = "IE2",                     "SFR", AF, 1, base=16, tooltip="interrupt enable resister2"
+sfr = "IE2.ES2",                 "SFR", AF, 1, base=16, bitRange=0
+sfr = "IE2.ESPI",                "SFR", AF, 1, base=16, bitRange=1
+sfr = "IE2.ET2",                 "SFR", AF, 1, base=16, bitRange=2
+sfr = "IE2.ES3",                 "SFR", AF, 1, base=16, bitRange=3
+sfr = "IE2.ES4",                 "SFR", AF, 1, base=16, bitRange=4
+sfr = "IE2.ET3",                 "SFR", AF, 1, base=16, bitRange=5
+sfr = "IE2.ET4",                 "SFR", AF, 1, base=16, bitRange=6  
+sfr = "IE2.------",              "SFR", AF, 1, base=16, bitRange=7
+sfr = "INTCLKO",                 "SFR", 8F, 1, base=16, tooltip="interrupt and Timer output control"
+sfr = "INTCLKO.T0CLKO",          "SFR", 8F, 1, base=16, bitRange=0
+sfr = "INTCLKO.T1CLKO",          "SFR", 8F, 1, base=16, bitRange=1
+sfr = "INTCLKO.T2CLKO",          "SFR", 8F, 1, base=16, bitRange=2
+sfr = "INTCLKO.------",          "SFR", 8F, 1, base=16, bitRange=3
+sfr = "INTCLKO.EX2",             "SFR", 8F, 1, base=16, bitRange=4
+sfr = "INTCLKO.EX3",             "SFR", 8F, 1, base=16, bitRange=5
+sfr = "INTCLKO.EX4",             "SFR", 8F, 1, base=16, bitRange=6
+sfr = "INTCLKO.-----",           "SFR", 8F, 1, base=16, bitRange=7
+sfr = "IP",                      "SFR", B8, 1, base=16, tooltip="interrupt priority resister1"
+sfr = "IP.PX0",                  "SFR", B8, 1, base=16, bitRange=0
+sfr = "IP.PT0",                  "SFR", B8, 1, base=16, bitRange=1
+sfr = "IP.PX1",                  "SFR", B8, 1, base=16, bitRange=2
+sfr = "IP.PT1",                  "SFR", B8, 1, base=16, bitRange=3
+sfr = "IP.PS",                   "SFR", B8, 1, base=16, bitRange=4
+sfr = "IP.PADC",                 "SFR", B8, 1, base=16, bitRange=5
+sfr = "IP.PLVD",                 "SFR", B8, 1, base=16, bitRange=6
+sfr = "IP.PPCA",                 "SFR", B8, 1, base=16, bitRange=7
+sfr = "IP2",                     "SFR", B5, 1, base=16, tooltip="interrupt priority resister2"
+sfr = "IP2.PS2",                 "SFR", B5, 1, base=16, bitRange=0
+sfr = "IP2.PSPI",                "SFR", B5, 1, base=16, bitRange=1
+sfr = "IP2.PPWM",                "SFR", B5, 1, base=16, bitRange=2
+sfr = "IP2.PWMFD",               "SFR", B5, 1, base=16, bitRange=3
+sfr = "IP2.PX4",                 "SFR", B5, 1, base=16, bitRange=4
+sfr = "IP2.PCMP",                "SFR", B5, 1, base=16, bitRange=5
+sfr = "IP2.PI2C",                "SFR", B5, 1, base=16, bitRange=6
+sfr = "IP2.------",              "SFR", B5, 1, base=16, bitRange=7
+sfr = "IPH",                     "SFR", B7, 1, base=16, tooltip="interrupt priority high resister"
+sfr = "IPH.PX0H",                "SFR", B7, 1, base=16, bitRange=0
+sfr = "IPH.PT0H",                "SFR", B7, 1, base=16, bitRange=1
+sfr = "IPH.PX1H",                "SFR", B7, 1, base=16, bitRange=2
+sfr = "IPH.PT1H",                "SFR", B7, 1, base=16, bitRange=3
+sfr = "IPH.PSH",                 "SFR", B7, 1, base=16, bitRange=4
+sfr = "IPH.PADCH",               "SFR", B7, 1, base=16, bitRange=5
+sfr = "IPH.PLVDH",               "SFR", B7, 1, base=16, bitRange=6
+sfr = "IPH.PPCAH",               "SFR", B7, 1, base=16, bitRange=7
+sfr = "IP2H",                    "SFR", B6, 1, base=16, tooltip="interrupt priority high resister2"
+sfr = "IP2H.PS2H",               "SFR", B6, 1, base=16, bitRange=0
+sfr = "IP2H.PSPIH",              "SFR", B6, 1, base=16, bitRange=1
+sfr = "IP2H.PPWMH",              "SFR", B6, 1, base=16, bitRange=2
+sfr = "IP2H.PPWMFDH",            "SFR", B6, 1, base=16, bitRange=3
+sfr = "IP2H.PX4H",               "SFR", B6, 1, base=16, bitRange=4
+sfr = "IP2H.PCMPH",              "SFR", B6, 1, base=16, bitRange=5
+sfr = "IP2H.PI2CH",              "SFR", B6, 1, base=16, bitRange=6
+sfr = "IP2H.------",             "SFR", B6, 1, base=16, bitRange=7
+sfr = "AUXINTIF",                "SFR", EF, 1, base=16, tooltip="extern interrupt flag"
+sfr = "AUXINTIF.T2IF",           "SFR", EF, 1, base=16, bitRange=0
+sfr = "AUXINTIF.T3IF",           "SFR", EF, 1, base=16, bitRange=1
+sfr = "AUXINTIF.T4IF",           "SFR", EF, 1, base=16, bitRange=2
+sfr = "AUXINTIF.------",         "SFR", EF, 1, base=16, bitRange=3
+sfr = "AUXINTIF.INT2IF",         "SFR", EF, 1, base=16, bitRange=4
+sfr = "AUXINTIF.INT3IF",         "SFR", EF, 1, base=16, bitRange=5
+sfr = "AUXINTIF.INT4IF",         "SFR", EF, 1, base=16, bitRange=6
+sfr = "AUXINTIF.-----",          "SFR", EF, 1, base=16, bitRange=7
+
+;; Comparator group
+;; ------------------------------------------------------------
+sfr = "CMPCR1",                  "SFR", E6, 1, base=16, tooltip="Comparator  control register1"
+sfr = "CMPCR1.CMPRES",           "SFR", E6, 1, base=16, bitRange=0
+sfr = "CMPCR1.CMPOE",            "SFR", E6, 1, base=16, bitRange=1
+sfr = "CMPCR1.NIS",              "SFR", E6, 1, base=16, bitRange=2
+sfr = "CMPCR1.PIS",              "SFR", E6, 1, base=16, bitRange=3
+sfr = "CMPCR1.NIE",              "SFR", E6, 1, base=16, bitRange=4
+sfr = "CMPCR1.PIE",              "SFR", E6, 1, base=16, bitRange=5
+sfr = "CMPCR1.CMPIF",            "SFR", E6, 1, base=16, bitRange=6
+sfr = "CMPCR1.CMPEN",            "SFR", E6, 1, base=16, bitRange=7
+sfr = "CMPCR2",                  "SFR", E7, 1, base=16, tooltip="Comparator  control register2"
+sfr = "CMPCR2.LCDTY0",           "SFR", E7, 1, base=16, bitRange=0
+sfr = "CMPCR2.LCDTY1",           "SFR", E7, 1, base=16, bitRange=1
+sfr = "CMPCR2.LCDTY2",           "SFR", E7, 1, base=16, bitRange=2
+sfr = "CMPCR2.LCDTY3",           "SFR", E7, 1, base=16, bitRange=3
+sfr = "CMPCR2.LCDTY4",           "SFR", E7, 1, base=16, bitRange=4
+sfr = "CMPCR2.LCDTY5",           "SFR", E7, 1, base=16, bitRange=5
+sfr = "CMPCR2.DISFLT",           "SFR", E7, 1, base=16, bitRange=6
+sfr = "CMPCR2.INVCMPO",          "SFR", E7, 1, base=16, bitRange=7
+
+
+;; PCA/PWM  group
+;; ------------------------------------------------------------
+sfr = "CCON",                    "SFR", D8, 1, base=16, tooltip="PCA  control register"
+sfr = "CCON.CCF0",               "SFR", D8, 1, base=16, bitRange=0
+sfr = "CCON.CCF1",               "SFR", D8, 1, base=16, bitRange=1
+sfr = "CCON.CCF2",               "SFR", D8, 1, base=16, bitRange=2
+sfr = "CCON.CCF3",               "SFR", D8, 1, base=16, bitRange=3
+sfr = "CCON.------",             "SFR", D8, 1, base=16, bitRange=4
+sfr = "CCON.-----",              "SFR", D8, 1, base=16, bitRange=5
+sfr = "CCON.CR",                 "SFR", D8, 1, base=16, bitRange=6
+sfr = "CCON.CF",                 "SFR", D8, 1, base=16, bitRange=7
+sfr = "CMOD",                    "SFR", D9, 1, base=16, tooltip="PCA mode register"
+sfr = "CMOD.ECF",                "SFR", D9, 1, base=16, bitRange=0
+sfr = "CMOD.CPS0",               "SFR", D9, 1, base=16, bitRange=1
+sfr = "CMOD.CPS1",               "SFR", D9, 1, base=16, bitRange=2
+sfr = "CMOD.CPS2",               "SFR", D9, 1, base=16, bitRange=3
+sfr = "CMOD.------",             "SFR", D9, 1, base=16, bitRange=4
+sfr = "CMOD.-----",              "SFR", D9, 1, base=16, bitRange=5
+sfr = "CMOD.----",               "SFR", D9, 1, base=16, bitRange=6
+sfr = "CMOD.CIDL",               "SFR", D9, 1, base=16, bitRange=7
+sfr = "CL",                      "SFR", E9, 1, base=16, tooltip="PCA Counter Low"
+sfr = "CCAPM0",                  "SFR", DA, 1, base=16, tooltip="PCA Module0 control register"
+sfr = "CCAPM0.ECCF0",            "SFR", DA, 1, base=16, bitRange=0
+sfr = "CCAPM0.PWM0",             "SFR", DA, 1, base=16, bitRange=1
+sfr = "CCAPM0.TOG0",             "SFR", DA, 1, base=16, bitRange=2
+sfr = "CCAPM0.MAT0",             "SFR", DA, 1, base=16, bitRange=3
+sfr = "CCAPM0.CCAPN0",           "SFR", DA, 1, base=16, bitRange=4
+sfr = "CCAPM0.CCAPP0",           "SFR", DA, 1, base=16, bitRange=5
+sfr = "CCAPM0.ECOM0",            "SFR", DA, 1, base=16, bitRange=6
+sfr = "CCAPM0.------",           "SFR", DA, 1, base=16, bitRange=7
+sfr = "CCAPM1",                  "SFR", DB, 1, base=16, tooltip="PCA Module1 control register"
+sfr = "CCAPM1.ECCF1",            "SFR", DB, 1, base=16, bitRange=0
+sfr = "CCAPM1.PWM1",             "SFR", DB, 1, base=16, bitRange=1
+sfr = "CCAPM1.TOG1",             "SFR", DB, 1, base=16, bitRange=2
+sfr = "CCAPM1.MAT1",             "SFR", DB, 1, base=16, bitRange=3
+sfr = "CCAPM1.CCAPN1",           "SFR", DB, 1, base=16, bitRange=4
+sfr = "CCAPM1.CCAPP1",           "SFR", DB, 1, base=16, bitRange=5
+sfr = "CCAPM1.ECOM1",            "SFR", DB, 1, base=16, bitRange=6
+sfr = "CCAPM1.------",           "SFR", DB, 1, base=16, bitRange=7
+sfr = "CCAPM2",                  "SFR", DC, 1, base=16, tooltip="PCA Module2 control register"
+sfr = "CCAPM2.ECCF2",            "SFR", DC, 1, base=16, bitRange=0
+sfr = "CCAPM2.PWM2",             "SFR", DC, 1, base=16, bitRange=1
+sfr = "CCAPM2.TOG2",             "SFR", DC, 1, base=16, bitRange=2
+sfr = "CCAPM2.MAT2",             "SFR", DC, 1, base=16, bitRange=3
+sfr = "CCAPM2.CCAPN2",           "SFR", DC, 1, base=16, bitRange=4
+sfr = "CCAPM2.CCAPP2",           "SFR", DC, 1, base=16, bitRange=5
+sfr = "CCAPM2.ECOM2",            "SFR", DC, 1, base=16, bitRange=6
+sfr = "CCAPM2.------",           "SFR", DC, 1, base=16, bitRange=7
+sfr = "CCAPM3",                  "SFR", DD, 1, base=16, tooltip="PCA Module3 control register"
+sfr = "CCAPM3.ECCF3",            "SFR", DD, 1, base=16, bitRange=0
+sfr = "CCAPM3.PWM3",             "SFR", DD, 1, base=16, bitRange=1
+sfr = "CCAPM3.TOG3",             "SFR", DD, 1, base=16, bitRange=2
+sfr = "CCAPM3.MAT3",             "SFR", DD, 1, base=16, bitRange=3
+sfr = "CCAPM3.CCAPN3",           "SFR", DD, 1, base=16, bitRange=4
+sfr = "CCAPM3.CCAPP3",           "SFR", DD, 1, base=16, bitRange=5
+sfr = "CCAPM3.ECOM3",            "SFR", DD, 1, base=16, bitRange=6
+sfr = "CCAPM3.------",           "SFR", DD, 1, base=16, bitRange=7
+sfr = "CCAP0L",                  "SFR", EA, 1, base=16, tooltip="PCA Module0 Low"
+sfr = "CCAP1L",                  "SFR", EB, 1, base=16, tooltip="PCA Module1 Low"
+sfr = "CCAP2L",                  "SFR", EC, 1, base=16, tooltip="PCA Module2 Low"
+sfr = "CCAP3L",                  "SFR", ED, 1, base=16, tooltip="PCA Module3 Low"
+sfr = "PWMCFG",                  "SFR", F1, 1, base=16, tooltip="Enhanced PWM config register"
+sfr = "PWMCFG.------",           "SFR", F1, 1, base=16, bitRange=0
+sfr = "PWMCFG.-----",            "SFR", F1, 1, base=16, bitRange=1
+sfr = "PWMCFG.----",             "SFR", F1, 1, base=16, bitRange=2
+sfr = "PWMCFG.---",              "SFR", F1, 1, base=16, bitRange=3
+sfr = "PWMCFG.--",               "SFR", F1, 1, base=16, bitRange=4
+sfr = "PWMCFG.-",                "SFR", F1, 1, base=16, bitRange=5
+sfr = "PWMCFG.ETADC",            "SFR", F1, 1, base=16, bitRange=6
+sfr = "PWMCFG.CBIF",             "SFR", F1, 1, base=16, bitRange=7
+sfr = "PCA_PWM0",                "SFR", F2, 1, base=16, tooltip="PCA0 PWM mode register"
+sfr = "PCA_PWM0.EPC0L",          "SFR", F2, 1, base=16, bitRange=0
+sfr = "PCA_PWM0.EPC0H",          "SFR", F2, 1, base=16, bitRange=1
+sfr = "PCA_PWM0.XXCAP0L0",       "SFR", F2, 1, base=16, bitRange=2
+sfr = "PCA_PWM0.XXCAP0L1",       "SFR", F2, 1, base=16, bitRange=3
+sfr = "PCA_PWM0.XXCAP0H0",       "SFR", F2, 1, base=16, bitRange=4
+sfr = "PCA_PWM0.XXCAP0H1",       "SFR", F2, 1, base=16, bitRange=5
+sfr = "PCA_PWM0.EBS00",          "SFR", F2, 1, base=16, bitRange=6
+sfr = "PCA_PWM0.EBS01",          "SFR", F2, 1, base=16, bitRange=7
+sfr = "PCA_PWM1",                "SFR", F3, 1, base=16, tooltip="PCA1 PWM mode register"
+sfr = "PCA_PWM1.EPC1L",          "SFR", F3, 1, base=16, bitRange=0
+sfr = "PCA_PWM1.EPC1H",          "SFR", F3, 1, base=16, bitRange=1
+sfr = "PCA_PWM1.XXCAP1L0",       "SFR", F3, 1, base=16, bitRange=2
+sfr = "PCA_PWM1.XXCAP1L1",       "SFR", F3, 1, base=16, bitRange=3
+sfr = "PCA_PWM1.XXCAP1H0",       "SFR", F3, 1, base=16, bitRange=4
+sfr = "PCA_PWM1.XXCAP1H1",       "SFR", F3, 1, base=16, bitRange=5
+sfr = "PCA_PWM1.EBS10",          "SFR", F3, 1, base=16, bitRange=6
+sfr = "PCA_PWM1.EBS11",          "SFR", F3, 1, base=16, bitRange=7
+sfr = "PCA_PWM2",                "SFR", F4, 1, base=16, tooltip="PCA2 PWM mode register"
+sfr = "PCA_PWM2.EPC2L",          "SFR", F4, 1, base=16, bitRange=0
+sfr = "PCA_PWM2.EPC2H",          "SFR", F4, 1, base=16, bitRange=1
+sfr = "PCA_PWM2.XXCAP2L0",       "SFR", F4, 1, base=16, bitRange=2
+sfr = "PCA_PWM2.XXCAP2L1",       "SFR", F4, 1, base=16, bitRange=3
+sfr = "PCA_PWM2.XXCAP2H0",       "SFR", F4, 1, base=16, bitRange=4
+sfr = "PCA_PWM2.XXCAP2H1",       "SFR", F4, 1, base=16, bitRange=5
+sfr = "PCA_PWM2.EBS20",          "SFR", F4, 1, base=16, bitRange=6
+sfr = "PCA_PWM2.EBS21",          "SFR", F4, 1, base=16, bitRange=7
+sfr = "PCA_PWM3",                "SFR", F5, 1, base=16, tooltip="PCA3 PWM mode register"
+sfr = "PCA_PWM3.EPC3L",          "SFR", F5, 1, base=16, bitRange=0
+sfr = "PCA_PWM3.EPC3H",          "SFR", F5, 1, base=16, bitRange=1
+sfr = "PCA_PWM3.XXCAP3L0",       "SFR", F5, 1, base=16, bitRange=2
+sfr = "PCA_PWM3.XXCAP3L1",       "SFR", F5, 1, base=16, bitRange=3
+sfr = "PCA_PWM3.XXCAP3H0",       "SFR", F5, 1, base=16, bitRange=4
+sfr = "PCA_PWM3.XXCAP3H1",       "SFR", F5, 1, base=16, bitRange=5
+sfr = "PCA_PWM3.EBS30",          "SFR", F5, 1, base=16, bitRange=6
+sfr = "PCA_PWM3.EBS31",          "SFR", F5, 1, base=16, bitRange=7
+sfr = "PWMIF",                   "SFR", F6, 1, base=16, tooltip="Enhanced PWM interrupt"
+sfr = "PWMIF.C0IF",              "SFR", F6, 1, base=16, bitRange=0
+sfr = "PWMIF.C1IF",              "SFR", F6, 1, base=16, bitRange=1
+sfr = "PWMIF.C2IF",              "SFR", F6, 1, base=16, bitRange=2
+sfr = "PWMIF.C3IF",              "SFR", F6, 1, base=16, bitRange=3
+sfr = "PWMIF.C4IF",              "SFR", F6, 1, base=16, bitRange=4
+sfr = "PWMIF.C5IF",              "SFR", F6, 1, base=16, bitRange=5
+sfr = "PWMIF.C6IF",              "SFR", F6, 1, base=16, bitRange=6
+sfr = "PWMIF.C7IF",              "SFR", F6, 1, base=16, bitRange=7
+sfr = "PWMFDCR",                 "SFR", F7, 1, base=16, tooltip="PWM Anomaly detection control"
+sfr = "PWMFDCR.FDIF",            "SFR", F7, 1, base=16, bitRange=0
+sfr = "PWMFDCR.FDIO",            "SFR", F7, 1, base=16, bitRange=1
+sfr = "PWMFDCR.FDCMP",           "SFR", F7, 1, base=16, bitRange=2
+sfr = "PWMFDCR.EFDI",            "SFR", F7, 1, base=16, bitRange=3
+sfr = "PWMFDCR.FLTFLIO",         "SFR", F7, 1, base=16, bitRange=4
+sfr = "PWMFDCR.ENFD",            "SFR", F7, 1, base=16, bitRange=5
+sfr = "PWMFDCR.INVIO",           "SFR", F7, 1, base=16, bitRange=6
+sfr = "PWMFDCR.INVCMP",          "SFR", F7, 1, base=16, bitRange=7
+sfr = "CH",                      "SFR", F9, 1, base=16, tooltip="PCA Counter High"
+sfr = "CCAP0H",                  "SFR", FA, 1, base=16, tooltip="PCA Module0 High"
+sfr = "CCAP1H",                  "SFR", FB, 1, base=16, tooltip="PCA Module1 High"
+sfr = "CCAP2H",                  "SFR", FC, 1, base=16, tooltip="PCA Module2 High"
+sfr = "CCAP3H",                  "SFR", FD, 1, base=16, tooltip="PCA Module3 High"
+sfr = "PWMCR",                   "SFR", FE, 1, base=16, tooltip="PWM control register"
+sfr = "PWMCR.------",            "SFR", FE, 1, base=16, bitRange=0
+sfr = "PWMCR.-----",             "SFR", FE, 1, base=16, bitRange=1
+sfr = "PWMCR.----",              "SFR", FE, 1, base=16, bitRange=2
+sfr = "PWMCR.---",               "SFR", FE, 1, base=16, bitRange=3
+sfr = "PWMCR.--",                "SFR", FE, 1, base=16, bitRange=4
+sfr = "PWMCR.-",                 "SFR", FE, 1, base=16, bitRange=5
+sfr = "PWMCR.ECBI",              "SFR", FE, 1, base=16, bitRange=6
+sfr = "PWMCR.EVPWM",             "SFR", FE, 1, base=16, bitRange=7
+
+
+
+sfr = "PWM0T1H",                 "XData", FF00, 1, base=16, tooltip="PWM0T1 Count High"
+sfr = "PWM0T1L",                 "XData", FF01, 1, base=16, tooltip="PWM0T1 Count Low"
+sfr = "PWM0T2H",                 "XData", FF02, 1, base=16, tooltip="PWM0T2 Count High"
+sfr = "PWM0T2L",                 "XData", FF03, 1, base=16, tooltip="PWM0T2 Count Low"
+sfr = "PWM0CR",                  "XData", FF04, 1, base=16, tooltip="PWM0 control register"
+sfr = "PWM0CR.EC0T1SI",          "XData", FF04, 1, base=16, bitRange=0
+sfr = "PWM0CR.EC0T2SI",          "XData", FF04, 1, base=16, bitRange=1
+sfr = "PWM0CR.EC0I",             "XData", FF04, 1, base=16, bitRange=2
+sfr = "PWM0CR.C0_S0",            "XData", FF04, 1, base=16, bitRange=3
+sfr = "PWM0CR.C0_S1",            "XData", FF04, 1, base=16, bitRange=4
+sfr = "PWM0CR.------",           "XData", FF04, 1, base=16, bitRange=5
+sfr = "PWM0CR.C0INI",            "XData", FF04, 1, base=16, bitRange=6
+sfr = "PWM0CR.ENC0O",            "XData", FF04, 1, base=16, bitRange=7
+sfr = "PWM0HLD",                 "XData", FF05, 1, base=16, tooltip="PWM0 electrical level hold"
+sfr = "PWM0HLD.HC0L",            "XData", FF05, 1, base=16, bitRange=0
+sfr = "PWM0HLD.HC0H",            "XData", FF05, 1, base=16, bitRange=1
+sfr = "PWM1T1H",                 "XData", FF10, 1, base=16, tooltip="PWM1T1 Count High"
+sfr = "PWM1T1L",                 "XData", FF11, 1, base=16, tooltip="PWM1T1 Count Low"
+sfr = "PWM1T2H",                 "XData", FF12, 1, base=16, tooltip="PWM1T2 Count High"
+sfr = "PWM1T2L",                 "XData", FF13, 1, base=16, tooltip="PWM1T2 Count Low"
+sfr = "PWM1CR",                  "XData", FF14, 1, base=16, tooltip="PWM1 control register"
+sfr = "PWM1CR.EC1T1SI",          "XData", FF14, 1, base=16, bitRange=0
+sfr = "PWM1CR.EC1T2SI",          "XData", FF14, 1, base=16, bitRange=1
+sfr = "PWM1CR.EC1I",             "XData", FF14, 1, base=16, bitRange=2
+sfr = "PWM1CR.C1_S0",            "XData", FF14, 1, base=16, bitRange=3
+sfr = "PWM1CR.C1_S1",            "XData", FF14, 1, base=16, bitRange=4
+sfr = "PWM1CR.C1INI",            "XData", FF14, 1, base=16, bitRange=6
+sfr = "PWM1CR.ENC1O",            "XData", FF14, 1, base=16, bitRange=7
+sfr = "PWM1HLD",                 "XData", FF15, 1, base=16, tooltip="PWM1 electrical level hold"
+sfr = "PWM1HLD.HC1L",            "XData", FF15, 1, base=16, bitRange=0
+sfr = "PWM1HLD.HC1H",            "XData", FF15, 1, base=16, bitRange=1
+sfr = "PWM2T1H",                 "XData", FF20, 1, base=16, tooltip="PWM2T1H Count High"
+sfr = "PWM2T1L",                 "XData", FF21, 1, base=16, tooltip="PWM2T1L Count Low"
+sfr = "PWM2T2H",                 "XData", FF22, 1, base=16, tooltip="PWM2T2 Count High"
+sfr = "PWM2T2L",                 "XData", FF23, 1, base=16, tooltip="PWM2T2 Count Low"
+sfr = "PWM2CR",                  "XData", FF24, 1, base=16, tooltip="PWM2 control register"
+sfr = "PWM2CR.EC2T1SI",          "XData", FF24, 1, base=16, bitRange=0
+sfr = "PWM2CR.EC2T2SI",          "XData", FF24, 1, base=16, bitRange=1
+sfr = "PWM2CR.EC2I",             "XData", FF24, 1, base=16, bitRange=2
+sfr = "PWM2CR.C2_S0",            "XData", FF24, 1, base=16, bitRange=3
+sfr = "PWM2CR.C2_S1",            "XData", FF24, 1, base=16, bitRange=4
+sfr = "PWM2CR.C2INI",            "XData", FF24, 1, base=16, bitRange=6
+sfr = "PWM2CR.ENC2O",            "XData", FF24, 1, base=16, bitRange=7
+sfr = "PWM2HLD",                 "XData", FF25, 1, base=16, tooltip="PWM2 electrical level hold"
+sfr = "PWM2HLD.HC2L",            "XData", FF25, 1, base=16, bitRange=0
+sfr = "PWM2HLD.HC2H",            "XData", FF25, 1, base=16, bitRange=1
+sfr = "PWM3T1H",                 "XData", FF30, 1, base=16, tooltip="PWM3T1H Count High"
+sfr = "PWM3T1L",                 "XData", FF31, 1, base=16, tooltip="PWM3T1L Count Low"
+sfr = "PWM3T2H",                 "XData", FF32, 1, base=16, tooltip="PWM3T2 Count High"
+sfr = "PWM3T2L",                 "XData", FF33, 1, base=16, tooltip="PWM3T2 Count Low"
+sfr = "PWM3CR",                  "XData", FF34, 1, base=16, tooltip="PWM3 control register"
+sfr = "PWM3CR.EC3T1SI",          "XData", FF34, 1, base=16, bitRange=0
+sfr = "PWM3CR.EC3T2SI",          "XData", FF34, 1, base=16, bitRange=1
+sfr = "PWM3CR.EC3I",             "XData", FF34, 1, base=16, bitRange=2
+sfr = "PWM3CR.C3_S0",            "XData", FF34, 1, base=16, bitRange=3
+sfr = "PWM3CR.C3_S1",            "XData", FF34, 1, base=16, bitRange=4
+sfr = "PWM3CR.C3INI",            "XData", FF34, 1, base=16, bitRange=6
+sfr = "PWM3CR.ENC3O",            "XData", FF34, 1, base=16, bitRange=7
+sfr = "PWM3HLD",                 "XData", FF35, 1, base=16, tooltip="PWM3 electrical level hold"
+sfr = "PWM3HLD.HC3L",            "XData", FF35, 1, base=16, bitRange=0
+sfr = "PWM3HLD.HC3H",            "XData", FF35, 1, base=16, bitRange=1
+sfr = "PWM4T1H",                 "XData", FF40, 1, base=16, tooltip="PWM4T1H Count High"
+sfr = "PWM4T1L",                 "XData", FF41, 1, base=16, tooltip="PWM4T1L Count Low"
+sfr = "PWM4T2H",                 "XData", FF42, 1, base=16, tooltip="PWM4T2 Count High"
+sfr = "PWM4T2L",                 "XData", FF43, 1, base=16, tooltip="PWM4T2 Count Low"
+sfr = "PWM4CR",                  "XData", FF44, 1, base=16, tooltip="PWM4 control register"
+sfr = "PWM4CR.EC4T1SI",          "XData", FF44, 1, base=16, bitRange=0
+sfr = "PWM4CR.EC4T2SI",          "XData", FF44, 1, base=16, bitRange=1
+sfr = "PWM4CR.EC4I",             "XData", FF44, 1, base=16, bitRange=2
+sfr = "PWM4CR.C4_S0",            "XData", FF44, 1, base=16, bitRange=3
+sfr = "PWM4CR.C4_S1",            "XData", FF44, 1, base=16, bitRange=4
+sfr = "PWM4CR.C4INI",            "XData", FF44, 1, base=16, bitRange=6
+sfr = "PWM4CR.ENC4O",            "XData", FF44, 1, base=16, bitRange=7
+sfr = "PWM4HLD",                 "XData", FF45, 1, base=16, tooltip="PWM4 electrical level hold"
+sfr = "PWM4HLD.HC4L",            "XData", FF45, 1, base=16, bitRange=0
+sfr = "PWM4HLD.HC4H",            "XData", FF45, 1, base=16, bitRange=1
+sfr = "PWM5T1H",                 "XData", FF50, 1, base=16, tooltip="PWM5T1H Count High"
+sfr = "PWM5T1L",                 "XData", FF51, 1, base=16, tooltip="PWM5T1L Count Low"
+sfr = "PWM5T2H",                 "XData", FF52, 1, base=16, tooltip="PWM5T2 Count High"
+sfr = "PWM5T2L",                 "XData", FF53, 1, base=16, tooltip="PWM5T2 Count Low"
+sfr = "PWM5CR",                  "XData", FF54, 1, base=16, tooltip="PWM5 control register"
+sfr = "PWM5CR.EC5T1SI",          "XData", FF54, 1, base=16, bitRange=0
+sfr = "PWM5CR.EC5T2SI",          "XData", FF54, 1, base=16, bitRange=1
+sfr = "PWM5CR.EC5I",             "XData", FF54, 1, base=16, bitRange=2
+sfr = "PWM5CR.C5_S0",            "XData", FF54, 1, base=16, bitRange=3
+sfr = "PWM5CR.C5_S1",            "XData", FF54, 1, base=16, bitRange=4
+sfr = "PWM5CR.C5INI",            "XData", FF54, 1, base=16, bitRange=6
+sfr = "PWM5CR.ENC5O",            "XData", FF54, 1, base=16, bitRange=7
+sfr = "PWM5HLD",                 "XData", FF55, 1, base=16, tooltip="PWM5 electrical level hold"
+sfr = "PWM5HLD.HC5L",            "XData", FF55, 1, base=16, bitRange=0
+sfr = "PWM5HLD.HC5H",            "XData", FF55, 1, base=16, bitRange=1
+sfr = "PWM6T1H",                 "XData", FF60, 1, base=16, tooltip="PWM6T1H Count High"
+sfr = "PWM6T1L",                 "XData", FF61, 1, base=16, tooltip="PWM6T1L Count Low"
+sfr = "PWM6T2H",                 "XData", FF62, 1, base=16, tooltip="PWM6T2 Count High"
+sfr = "PWM6T2L",                 "XData", FF63, 1, base=16, tooltip="PWM6T2 Count Low"
+sfr = "PWM6CR",                  "XData", FF64, 1, base=16, tooltip="PWM6 control register"
+sfr = "PWM6CR.EC6T1SI",          "XData", FF64, 1, base=16, bitRange=0
+sfr = "PWM6CR.EC6T2SI",          "XData", FF64, 1, base=16, bitRange=1
+sfr = "PWM6CR.EC6I",             "XData", FF64, 1, base=16, bitRange=2
+sfr = "PWM6CR.C6_S0",            "XData", FF64, 1, base=16, bitRange=3
+sfr = "PWM6CR.C6_S1",            "XData", FF64, 1, base=16, bitRange=4
+sfr = "PWM6CR.C6INI",            "XData", FF64, 1, base=16, bitRange=6
+sfr = "PWM6CR.ENC6O",            "XData", FF64, 1, base=16, bitRange=7
+sfr = "PWM6HLD",                 "XData", FF65, 1, base=16, tooltip="PWM6 electrical level hold"
+sfr = "PWM6HLD.HC6L",            "XData", FF65, 1, base=16, bitRange=0
+sfr = "PWM6HLD.HC6H",            "XData", FF65, 1, base=16, bitRange=1
+sfr = "PWM7T1H",                 "XData", FF70, 1, base=16, tooltip="PWM7T1H Count High"
+sfr = "PWM7T1L",                 "XData", FF71, 1, base=16, tooltip="PWM7T1L Count Low"
+sfr = "PWM7T2H",                 "XData", FF72, 1, base=16, tooltip="PWM7T2 Count High"
+sfr = "PWM7T2L",                 "XData", FF73, 1, base=16, tooltip="PWM7T2 Count Low"
+sfr = "PWM7CR",                  "XData", FF74, 1, base=16, tooltip="PWM7 control register"
+sfr = "PWM7CR.EC7T1SI",          "XData", FF74, 1, base=16, bitRange=0
+sfr = "PWM7CR.EC7T2SI",          "XData", FF74, 1, base=16, bitRange=1
+sfr = "PWM7CR.EC7I",             "XData", FF74, 1, base=16, bitRange=2
+sfr = "PWM7CR.C7_S0",            "XData", FF74, 1, base=16, bitRange=3
+sfr = "PWM7CR.C7_S1",            "XData", FF74, 1, base=16, bitRange=4
+sfr = "PWM7CR.C7INI",            "XData", FF74, 1, base=16, bitRange=6
+sfr = "PWM7CR.ENC7O",            "XData", FF74, 1, base=16, bitRange=7
+sfr = "PWM7HLD",                 "XData", FF75, 1, base=16, tooltip="PWM7 electrical level hold"
+sfr = "PWM7HLD.HC7L",            "XData", FF75, 1, base=16, bitRange=0
+sfr = "PWM7HLD.HC7H",            "XData", FF75, 1, base=16, bitRange=1
+sfr = "PWMCH",                   "XData", FFF0, 1, base=16, tooltip="PWM Counter High"
+sfr = "PWMCL",                   "XData", FFF1, 1, base=16, tooltip="PWM Counter Low"
+sfr = "PWMCKS",                  "XData", FFF2, 1, base=16, tooltip="PWM Clock Select"
+sfr = "PWMCKS.PWM_PS0",          "XData", FFF2, 1, base=16, bitRange=0
+sfr = "PWMCKS.PWM_PS1",          "XData", FFF2, 1, base=16, bitRange=1
+sfr = "PWMCKS.PWM_PS2",          "XData", FFF2, 1, base=16, bitRange=2
+sfr = "PWMCKS.PWM_PS3",          "XData", FFF2, 1, base=16, bitRange=3
+sfr = "PWMCKS.SELT2",            "XData", FFF2, 1, base=16, bitRange=4
+sfr = "PWMCKS.------",           "XData", FFF2, 1, base=16, bitRange=5
+sfr = "PWMCKS.-----",            "XData", FFF2, 1, base=16, bitRange=6
+sfr = "PWMCKS.----",             "XData", FFF2, 1, base=16, bitRange=7
+sfr = "TADCPH",                  "XData", FFF3, 1, base=16, tooltip="Trigger ADC Count High"
+sfr = "TADCPL",                  "XData", FFF4, 1, base=16, tooltip="Trigger ADC Count Low"
+
+;; I2C group
+;; ------------------------------------------------------------
+sfr = "I2CCFG",                  "XData", FE80, 1, base=16, tooltip="I2C Config register"
+sfr = "I2CCFG.MSSPEED0",         "XData", FE80, 1, base=16, bitRange=0
+sfr = "I2CCFG.MSSPEED1",         "XData", FE80, 1, base=16, bitRange=1
+sfr = "I2CCFG.MSSPEED2",         "XData", FE80, 1, base=16, bitRange=2
+sfr = "I2CCFG.MSSPEED3",         "XData", FE80, 1, base=16, bitRange=3
+sfr = "I2CCFG.MSSPEED4",         "XData", FE80, 1, base=16, bitRange=4
+sfr = "I2CCFG.MSSPEED5",         "XData", FE80, 1, base=16, bitRange=5
+sfr = "I2CCFG.MSSL",             "XData", FE80, 1, base=16, bitRange=6
+sfr = "I2CCFG.ENI2C",            "XData", FE80, 1, base=16, bitRange=7
+sfr = "I2CMSCR",                 "XData", FE81, 1, base=16, tooltip="I2C Master control register"
+sfr = "I2CMSCR.MSCMD0",          "XData", FE81, 1, base=16, bitRange=0
+sfr = "I2CMSCR.MSCMD1",          "XData", FE81, 1, base=16, bitRange=1
+sfr = "I2CMSCR.MSCMD2",          "XData", FE81, 1, base=16, bitRange=2
+sfr = "I2CMSCR.MSCMD3",          "XData", FE81, 1, base=16, bitRange=3
+sfr = "I2CMSCR.------",          "XData", FE81, 1, base=16, bitRange=4
+sfr = "I2CMSCR.-----",           "XData", FE81, 1, base=16, bitRange=5
+sfr = "I2CMSCR.----",            "XData", FE81, 1, base=16, bitRange=6
+sfr = "I2CMSCR.EMSI",            "XData", FE81, 1, base=16, bitRange=7
+sfr = "I2CMSST",                 "XData", FE82, 1, base=16, tooltip="I2C Master state register"
+sfr = "I2CMSST.MSACKO",          "XData", FE82, 1, base=16, bitRange=0
+sfr = "I2CMSST.MSACKI",          "XData", FE82, 1, base=16, bitRange=1
+sfr = "I2CMSST.------",          "XData", FE82, 1, base=16, bitRange=2
+sfr = "I2CMSST.-----",           "XData", FE82, 1, base=16, bitRange=3
+sfr = "I2CMSST.----",            "XData", FE82, 1, base=16, bitRange=4
+sfr = "I2CMSST.---",             "XData", FE82, 1, base=16, bitRange=5
+sfr = "I2CMSST.MSIF",            "XData", FE82, 1, base=16, bitRange=6
+sfr = "I2CMSST.MSBUSY",          "XData", FE82, 1, base=16, bitRange=7
+sfr = "I2CSLCR",                 "XData", FE83, 1, base=16, tooltip="I2C slave control register"
+sfr = "I2CSLCR.SLRST",           "XData", FE83, 1, base=16, bitRange=0
+sfr = "I2CSLCR.------",          "XData", FE83, 1, base=16, bitRange=1
+sfr = "I2CSLCR.-----",           "XData", FE83, 1, base=16, bitRange=2
+sfr = "I2CSLCR.ESTOI",           "XData", FE83, 1, base=16, bitRange=3
+sfr = "I2CSLCR.ETXI",            "XData", FE83, 1, base=16, bitRange=4
+sfr = "I2CSLCR.ERXI",            "XData", FE83, 1, base=16, bitRange=5
+sfr = "I2CSLCR.ESTAI",           "XData", FE83, 1, base=16, bitRange=6
+sfr = "I2CSLCR.----",            "XData", FE83, 1, base=16, bitRange=7
+sfr = "I2CSLST",                 "XData", FE84, 1, base=16, tooltip="I2C slave state register"
+sfr = "I2CSLST.SLACKO",          "XData", FE84, 1, base=16, bitRange=0
+sfr = "I2CSLST.SLACKI",          "XData", FE84, 1, base=16, bitRange=1
+sfr = "I2CSLST.TXING",           "XData", FE84, 1, base=16, bitRange=2
+sfr = "I2CSLST.STOIF",           "XData", FE84, 1, base=16, bitRange=3
+sfr = "I2CSLST.TXIF",            "XData", FE84, 1, base=16, bitRange=4
+sfr = "I2CSLST.RXIF",            "XData", FE84, 1, base=16, bitRange=5
+sfr = "I2CSLST.STAIF",           "XData", FE84, 1, base=16, bitRange=6
+sfr = "I2CSLST.SLBUSY",          "XData", FE84, 1, base=16, bitRange=7
+sfr = "I2CSLADR",                "XData", FE85, 1, base=16, tooltip="I2C slave address register"
+sfr = "I2CSLADR.MA",             "XData", FE85, 1, base=16, bitRange=0
+sfr = "I2CSLADR.SLADR0",         "XData", FE85, 1, base=16, bitRange=1
+sfr = "I2CSLADR.SLADR1",         "XData", FE85, 1, base=16, bitRange=2
+sfr = "I2CSLADR.SLADR2",         "XData", FE85, 1, base=16, bitRange=3
+sfr = "I2CSLADR.SLADR3",         "XData", FE85, 1, base=16, bitRange=4
+sfr = "I2CSLADR.SLADR4",         "XData", FE85, 1, base=16, bitRange=5
+sfr = "I2CSLADR.SLADR5",         "XData", FE85, 1, base=16, bitRange=6
+sfr = "I2CSLADR.SLADR6",         "XData", FE85, 1, base=16, bitRange=7
+sfr = "I2CTXD",                  "XData", FE86, 1, base=16, tooltip="I2C Tx data register"
+sfr = "I2CRXD",                  "XData", FE87, 1, base=16, tooltip="I2C Rx data register"
+sfr = "I2CMSAUX",                "XData", FE88, 1, base=16, tooltip="I2C Master aux control register"
+sfr = "I2CMSAUX.WDTA",           "XData", FE88, 1, base=16, bitRange=0
+sfr = "I2CMSAUX.------",         "XData", FE88, 1, base=16, bitRange=1
+sfr = "I2CMSAUX.-----",          "XData", FE88, 1, base=16, bitRange=2
+sfr = "I2CMSAUX.----",           "XData", FE88, 1, base=16, bitRange=3
+sfr = "I2CMSAUX.---",            "XData", FE88, 1, base=16, bitRange=4
+sfr = "I2CMSAUX.--",             "XData", FE88, 1, base=16, bitRange=5
+sfr = "I2CMSAUX.-",              "XData", FE88, 1, base=16, bitRange=6
+sfr = "I2CMSAUX.",               "XData", FE88, 1, base=16, bitRange=7
+
+
+;; ROM parameter group
+;; ------------------------------------------------------------
+sfr = "Device_ID0",               "Code", FE6, 1, base=16, tooltip="ROM ID0"
+sfr = "Device_ID1",               "Code", FE7, 1, base=16, tooltip="ROM ID1"
+sfr = "Device_ID2",               "Code", FE8, 1, base=16, tooltip="ROM ID2"
+sfr = "Device_ID3",               "Code", FE9, 1, base=16, tooltip="ROM ID3"
+sfr = "Device_ID4",               "Code", FEA, 1, base=16, tooltip="ROM ID4"
+sfr = "Device_ID5",               "Code", FEB, 1, base=16, tooltip="ROM ID5"
+sfr = "Device_ID6",               "Code", FEC, 1, base=16, tooltip="ROM ID6"
+sfr = "Bandgap_H",                "Code", FE4, 1, base=16, tooltip="Bandgap"
+sfr = "Bandgap_L",                "Code", FE5, 1, base=16, tooltip="Bandgap"
+sfr = "WakeUp_Fre_H",             "Code", FE2, 1, base=16, tooltip="32K_PowerDown_Fre"
+sfr = "WakeUp_Fre_L",             "Code", FE3, 1, base=16, tooltip="32K_PowerDown_Fre"
+sfr = "22184kHz_IRC",             "Code", FE1, 1, base=16, tooltip="22.184MHz_IRC"
+sfr = "24MHz_IRC",                "Code", FE0, 1, base=16, tooltip="24MHz_IRC"
+
+[SfrReset]
+;; Syntax: Reset[Counter] = "zone_name" Address Size(in bytes) InitValue
+
+;; I/O port registers group
+Reset0 = "SFR" 80 1 FF
+Reset1 = "SFR" 90 1 FF
+Reset2 = "SFR" A0 1 FF
+Reset3 = "SFR" B0 1 FF
+
+;; C51 core registers group
+Reset4 = "SFR" 81 1 07
+Reset5 = "SFR" 82 1 00
+Reset6 = "SFR" 83 1 00
+Reset7 = "SFR" 84 1 00
+Reset8 = "SFR" 85 1 00
+Reset9 = "SFR" D0 1 00
+Reset10 = "SFR" E0 1 00
+Reset11 = "SFR" F0 1 00
+
+;; Power and clock control registers group
+Reset12 = "SFR" 87 1 30
+
+;; Timer registers group
+Reset13 = "SFR" 88 1 00
+Reset14 = "SFR" 89 1 00
+Reset15 = "SFR" 8A 1 00
+Reset16 = "SFR" 8B 1 00
+Reset17 = "SFR" 8C 1 00
+Reset18 = "SFR" 8D 1 00
+Reset19 = "SFR" C8 1 00
+Reset20 = "SFR" C9 1 00
+Reset21 = "SFR" CA 1 00
+Reset22 = "SFR" CB 1 00
+Reset23 = "SFR" CC 1 00
+Reset24 = "SFR" CD 1 00
+
+;; Others group
+Reset25 = "SFR" 8E 1 00
+Reset26 = "SFR" A2 1 00
+
+;; Serial I/O port registers group
+Reset27 = "SFR" 98 1 00
+Reset28 = "SFR" 99 1 00
+
+;; Hardware Watchdog Timer registers group
+Reset29 = "SFR" A6 1 00
+
+;; Interrupt system registers group
+Reset30 = "SFR" A8 1 00
+Reset31 = "SFR" B8 1 00
+
+Reset33 = "SFR" 8E 1 01
+Reset34 = "SFR" 9A 1 40
+Reset35 = "SFR" AA 1 FF
+Reset36 = "SFR" AB 1 7F
+Reset37 = "SFR" C0 1 FF
+Reset38 = "SFR" C2 1 FF
+Reset39 = "SFR" C8 1 FF
+Reset40 = "SFR" C9 1 FF
+Reset41 = "SFR" CA 1 FF
+Reset42 = "SFR" CD 1 00
+Reset43 = "SFR" CE 1 04
+Reset44 = "SFR" CF 1 00
+
+;; SFR register groups
+[SfrGroupInfo]
+group = "Clock System" ,"CKSEL" ,"CLKDIV" ,"IRC24MCR" ,"XOSCCR","IRC32KCR","LIRTRIM","IRTRIM"
+group = "Power Management" ,"PCON" ,"VOCTRL","RSTCFG","WKTCL" ,"WKTCH"
+group = "Watch Dog" ,"WDT_CONTR"
+group = "ROM Paramater", "Device_ID0" ,"Device_ID1" ,"Device_ID2" ,"Device_ID3" ,"Device_ID4" ,"Device_ID5","Device_ID6" ,"Bandgap_H","Bandgap_L","WakeUp_Fre_H","WakeUp_Fre_L","22184kHz_IRC","24MHz_IRC"
+group = "Interrupt System" ,"IE" ,"IE2" ,"INTCLKO" ,"IP","IP2","IPH","IP2H","AUXINTIF"
+group = "I/O Port" ,"P0" ,"P1" ,"P2" ,"P3" ,"P4" ,"P5" ,"P6" ,"P7" ,"P0M0" ,"P0M1" ,"P0PU" ,"P0NCS" ,"P1M0" ,"P1M1" ,"P1PU" ,"P1NCS" ,"P2M0" ,"P2M1" ,"P2PU" ,"P2NCS" ,"P3M0" ,"P3M1" ,"P3PU" ,"P3NCS" ,"P4M0" ,"P4M1" ,"P4PU" ,"P4NCS" ,"P5M0" ,"P5M1" ,"P5PU" ,"P5NCS" ,"P6M0" ,"P6M1" ,"P6PU" ,"P6NCS","P7M0" ,"P7M1" ,"P7PU" ,"P7NCS"
+group = "Timer/Counter" ,"TCON" ,"TMOD" ,"TL0" ,"TL1" ,"TH0" ,"TH1"  ,"T4T3M" ,"T4H" ,"T4L","T3H" ,"T3L" ,"T2H"  ,"T2L" 
+group = "Serial Port" ,"SCON" ,"SBUF" ,"S2CON" ,"S2BUF" ,"S3CON" ,"S3BUF"  ,"S4CON"  ,"S4BUF"  ,"SADDR" ,"SADEN" 
+group = "Comparator" ,"CMPCR1" ,"CMPCR2"
+group = "IAP/EEPROM" ,"IAP_DATA" ,"IAP_ADDRH" ,"IAP_ADDRL" ,"IAP_CMD" ,"IAP_TRIG" ,"IAP_CONTR" 
+group = "ADC" ,"ADC_CONTR" ,"ADC_RES" ,"ADC_RESL" ,"ADCCFG"
+group = "PCA/CCP/PWM" ,"CCON" ,"CMOD" ,"CCAPM0" ,"CCAPM1" ,"CCAPM2" ,"CCAPM3" ,"CL" ,"CH" ,"CCAP0L" ,"CCAP1L" ,"CCAP2L" ,"CCAP3L" ,"CCAP0H" ,"CCAP1H" ,"CCAP2H" ,"CCAP3H" ,"PCA_PWM0"  ,"PCA_PWM1"  ,"PCA_PWM2"  ,"PCA_PWM3"
+group = "Enhanced PWM" ,"PWMCFG" ,"PWMIF" ,"PWMFDCR" ,"PWMCR" ,"PWMCH" ,"PWMCL" ,"PWMCKS" ,"PWM0T1H" ,"PWM0T1L" ,"PWM0T2H" ,"PWM0T2L" ,"PWM0CR" ,"PWM0HLD","PWM1T1H" ,"PWM1T1L" ,"PWM1T2H" ,"PWM1T2L" ,"PWM1CR" ,"PWM1HLD","PWM2T1H" ,"PWM2T1L" ,"PWM2T2H" ,"PWM2T2L" ,"PWM2CR" ,"PWM2HLD","PWM3T1H" ,"PWM3T1L" ,"PWM3T2H" ,"PWM3T2L" ,"PWM3CR" ,"PWM3HLD","PWM4T1H" ,"PWM4T1L" ,"PWM4T2H" ,"PWM4T2L" ,"PWM4CR" ,"PWM4HLD","PWM5T1H" ,"PWM5T1L" ,"PWM5T2H" ,"PWM5T2L" ,"PWM5CR" ,"PWM5HLD","PWM6T1H" ,"PWM6T1L" ,"PWM6T2H" ,"PWM6T2L" ,"PWM6CR" ,"PWM6HLD","PWM7T1H" ,"PWM7T1L" ,"PWM7T2H" ,"PWM7T2L" ,"PWM7CR" ,"PWM7HLD","TADCPH" ,"TADCPL" 
+group = "SPI" ,"SPSTAT" ,"SPCTL" ,"SPDAT" 
+group = "I2C" ,"I2CCFG" ,"I2CMSCR" ,"I2CMSST" ,"I2CSLCR" ,"I2CSLST" ,"I2CSLADR"  ,"I2CTXD" ,"I2CRXD" ,"I2CMSAUX" 
+group = "DPTR" ,"DPS" ,"TA"
+group = "Other" ,"AUXR" ,"BUS_SPEED" ,"P_SW1" ,"P_SW2"
+
+
+
+;; Interrupt Vectors
+[InterruptList]
+;;-----------------------------------------------------------------------------
+;;                           Vector Enable                                     
+;;            Id                  Prio                Pending           Comment
+;;-----------------------------------------------------------------------------
+Interrupt0  = NMI            0x00 1                                            
+Interrupt1  = INT0           0x03 2 IE.EX0            TCON.IE0         
+Interrupt2  = Timer0         0x0B 2 IE.ET0            TCON.TF0         
+Interrupt3  = INT1           0x13 2 IE.EX1            TCON.IE1          
+Interrupt4  = Timer1         0x1B 2 IE.ET1            TCON.TF1          
+Interrupt5  = ADC            0x2B 2 IE.EADC           ADC_CONTR.ADC_FLAG          
+Interrupt6  = LVD            0x33 2 IE.ELVD           PCON.LVDF          
+Interrupt7  = PCA            0x3B 2 CMOD.ECF          CMPCR1.CMPIF          
+Interrupt8  = UART2          0x43 2 IE2.ES2           S2CON.S2RI         
+Interrupt9  = SPI            0x4B 2 IE2.ESPI          SPSTAT.SPIF           
+Interrupt10 = INT2           0x53 2 INTCLKO.EX2       AUXINTIF.INT2IF        
+Interrupt11 = INT3           0x5B 2 INTCLKO.EX3       AUXINTIF.INT3IF        
+Interrupt12 = Timer2         0x63 2 IE2.ET2           AUXINTIF.T2IF      
+Interrupt16 = INT4           0x83 2 INTCLKO.EX4       AUXINTIF.INT4IF    
+Interrupt17 = UART3          0x8B 2 IE2.ES3           S3CON.S3RI         
+Interrupt18 = UART4          0x93 2 IE2.ES4           S4CON.S4RI           
+Interrupt19 = Timer3         0x9B 2 IE2.ET3           AUXINTIF.T3IF        
+Interrupt20 = Timer4         0xA3 2 IE2.ET4           AUXINTIF.T4IF        
+Interrupt21 = CMP            0xAB 2 CMPCR1.PIE        CMPCR1.CMPIF         
+Interrupt22 = PWM            0xB3 2 PWMCR.ECBI        PWMCFG.CBIF          
+Interrupt23 = PWMFD          0xBB 2 PWMFDCR.EFDI      PWMFDCR.FDIF         
+Interrupt24 = I2C            0xC3 2 I2CMSCR.EMSI      I2CMSST.MSIF          
