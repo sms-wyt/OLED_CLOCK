@@ -1,10 +1,10 @@
 /**************************************************************************************************
  *                                        - ioSTC8.h -
- *                                   STC8ϵ�е�Ƭ��IARƽ̨ͷ�ļ�
- *                            �ο�datasheet��STC8ϵ�е�Ƭ�������ο��ֲ�
- *                                      ��д�ߣ�WYT
- *                                      �����ߣ�WYT
- *                                     QQ��936308890
+ *                                   STC8系列单片机IAR平台头文件
+ *                            参考datasheet：STC8系列单片机技术参考手册
+ *                                      编写者：WYT
+ *                                      测试者：WYT
+ *                                     QQ：936308890
  **************************************************************************************************
  */
 
@@ -12,11 +12,11 @@
 #define IOSTC8_H
 
 /* ------------------------------------------------------------------------------------------------
- *                                      ����������
+ *                                      编译器抽象
  * ------------------------------------------------------------------------------------------------
  */
-#ifdef __IAR_SYSTEMS_ICC__  /*IARƽ̨ C���� ������*/
-#pragma language=extended  /*֧��������չ*/
+#ifdef __IAR_SYSTEMS_ICC__  /*IAR平台 C语言 编译器*/
+#pragma language=extended  /*支持语言扩展*/
 #define SFR(name,addr)   __sfr   __no_init  volatile  unsigned char  name @ addr;
 #define SFRBIT(name, addr, bit7, bit6, bit5, bit4, bit3, bit2, bit1, bit0) \
 __sfr __no_init volatile union \
@@ -49,14 +49,14 @@ __xdata __no_init volatile union  \
     unsigned char bit7 : 1;    \
   } ;                           \
 } @ addr;
-#define SBIT(name,addr) /* δ��IAR C���Ա�������ʹ�� */
+#define SBIT(name,addr) /* 未在IAR C语言编译器中使用 */
 #define XREG(addr)       ((unsigned char volatile __xdata *) 0)[addr]
 #define XREG_INT(addr)   ((unsigned int volatile __xdata *) 0)[addr]
 #define PXREG(addr)      (*(unsigned char volatile __xdata *) addr)
 #define VECT(num,addr)   addr
 
 
-#elif defined __IAR_SYSTEMS_ASM__  /*IARƽ̨ 8051��� ������*/
+#elif defined __IAR_SYSTEMS_ASM__  /*IAR平台 8051汇编 编译器*/
 #define SFR(name,addr)   name  DEFINE  addr
 SFRBITMACRO MACRO t, addr, bit7 , bit6, bit5, bit4, bit3, bit2, bit1, bit0
 t    DEFINE addr
@@ -84,7 +84,7 @@ bit0 DEFINE addr.0
 #endif
 
 
-/*******************STC8ϵ�е�Ƭ��ȫ���ж�����������ڵ�ַ********************/
+/*******************STC8系列单片机全部中断向量及其入口地址********************/
 #define  INT0_VECTOR     VECT(  0, 0x03 )
 #define  Timer0_VECTOR   VECT(  1, 0x0b )
 #define  INT1_VECTOR     VECT(  2, 0x13 )
@@ -108,7 +108,7 @@ bit0 DEFINE addr.0
 #define  PWMFD_VECTOR    VECT(  23, 0xbb )
 #define  I2C_VECTOR      VECT(  24, 0xc3 )
 #define  CAN_VECTOR      VECT(  25, 0xcb )     
-/*****************************51�ں����⹦�ܼĴ���**************************/                    
+/*****************************51内核特殊功能寄存器**************************/                    
 SFR(  SP        ,  0x81  )  
 SFR(  DPL       ,  0x82  )   
 SFR(  DPH       ,  0x83  )  
@@ -119,44 +119,44 @@ SFR(  B         ,  0xf0  )
 SFR(  DPS       ,  0xe3  ) 
 SFR(  TA        ,  0xae  )
 SFRBIT( PSW     ,  0xd0, CY, AC, F0, RS1, RS0, OV, , P )  
-/*****************************P0�˿����⹦�ܼĴ���**************************/
+/*****************************P0端口特殊功能寄存器**************************/
 SFRBIT( P0      ,  0x80, P0_7, P0_6, P0_5, P0_4, P0_3, P0_2, P0_1, P0_0 )
 SFR(  P0M0        ,  0x94  )
 SFR(  P0M1        ,  0x93  )
-/*****************************P1�˿����⹦�ܼĴ���**************************/
+/*****************************P1端口特殊功能寄存器**************************/
 SFRBIT( P1      ,  0x90, P1_7, P1_6, P1_5, P1_4, P1_3, P1_2, P1_1, P1_0 )
 SFR(  P1M0        ,  0x92  )
 SFR(  P1M1        ,  0x91  )
-/*****************************P2�˿����⹦�ܼĴ���**************************/
+/*****************************P2端口特殊功能寄存器**************************/
 SFRBIT( P2      ,  0xa0, P2_7, P2_6, P2_5, P2_4, P2_3, P2_2, P2_1, P2_0 )
 SFR(  P2M0        ,  0x96  )
 SFR(  P2M1        ,  0x95  )
-/*****************************P3�˿����⹦�ܼĴ���**************************/
+/*****************************P3端口特殊功能寄存器**************************/
 SFRBIT( P3      ,  0xb0, P3_7, P3_6, P3_5, P3_4, P3_3, P3_2, P3_1, P3_0 )
 SFR(  P3M0        ,  0xb2  )
-SFR(  P3M1        ,  0x91  )
-/*****************************P4�˿����⹦�ܼĴ���**************************/
+SFR(  P3M1        ,  0xb1  )
+/*****************************P4端口特殊功能寄存器**************************/
 SFRBIT( P4      ,  0xc0, P4_7, P4_6, P4_5, P4_4, P4_3, P4_2, P4_1, P4_0 )
 SFR(  P4M0       ,  0xb4  )
 SFR(  P4M1        ,  0xb3  )
-/*****************************P5�˿����⹦�ܼĴ���**************************/
+/*****************************P5端口特殊功能寄存器**************************/
 SFRBIT( P5      ,  0xc8, P5_7, P5_6, P5_5, P5_4, P5_3, P5_2, P5_1, P5_0 )
 SFR(  P5M0        ,  0xca  )
 SFR(  P5M1        ,  0xc9  )
-/*****************************P6�˿����⹦�ܼĴ���**************************/
+/*****************************P6端口特殊功能寄存器**************************/
 SFRBIT( P6      ,  0xe8, P6_7, P6_6, P6_5, P6_4, P6_3, P6_2, P6_1, P6_0 )
 SFR(  P6M0        ,  0xcc  )
 SFR(  P6M1        ,  0xcb  )
-/*****************************P7�˿����⹦�ܼĴ���**************************/
+/*****************************P7端口特殊功能寄存器**************************/
 SFRBIT( P7      ,  0xc8, P7_7, P7_6, P7_5, P7_4, P7_3, P7_2, P7_1, P7_0 )
 SFR(  P7M0        ,  0xe2  )
 SFR(  P7M1        ,  0xe1  )
 
-/**********************************˵��*************************************
-*I/O�˿����⹦�ܼĴ���λ����չRAM����
-*�Ƚ�P_SW2��BIT7��Ϊ1,��������������Щ�Ĵ���
+/**********************************说明*************************************
+*I/O端口特殊功能寄存器位于扩展RAM区域
+*先将P_SW2的BIT7置为1,才能正常操作这些寄存器
 ****************************************************************************/
-/*****************************I/O�˿����⹦�ܼĴ���*************************/
+/*****************************I/O端口特殊功能寄存器*************************/
 XDATABIT( P0PU  , 0xfe10, , , , , , , , )
 XDATABIT( P1PU  , 0xfe11, , , , , , , , )
 XDATABIT( P2PU  , 0xfe12, , , , , , , , )
@@ -173,7 +173,7 @@ XDATABIT( P4NCS , 0xfe1c, , , , , , , , )
 XDATABIT( P5NCS , 0xfe1d, , , , , , , , )
 XDATABIT( P6NCS , 0xfe1e, , , , , , , , )
 XDATABIT( P7NCS , 0xfe1f, , , , , , , , )
-/*****************************ϵͳ�������⹦�ܼĴ���**************************/
+/*****************************系统管理特殊功能寄存器**************************/
 SFRBIT( PCON  , 0x87, SMOD, SMOD0, LVDF, POF, GF1, GF0, PD, IDL )
 
 SFRBIT( AUXR  , 0x8e, T0x12, T1x12, UART_M0x6, T2R, T2_CT, T2x12, EXTRAM, S1ST2 )
@@ -184,11 +184,11 @@ SFRBIT( P_SW2  , 0xba, EAXFR, , , , , , , )
 SFR(  VOCTRL     ,  0xbb  )
 SFR(  RSTCFG     ,  0xff  )
 
-/**********************************˵��************************************
-*ʱ��ϵͳ���⹦�ܼĴ���λ����չRAM����
-*�Ƚ�P_SW2��BIT7��Ϊ1,��������������Щ�Ĵ���
+/**********************************说明************************************
+*时钟系统特殊功能寄存器位于扩展RAM区域
+*先将P_SW2的BIT7置为1,才能正常操作这些寄存器
 ***************************************************************************/
-/*****************************ʱ��ϵͳ���⹦��*****************************/
+/*****************************时钟系统特殊功能*****************************/
 XDATABIT( CKSEL  , 0xfe00, , , , , MCLKO_S, , , )
 XDATABIT( CLKDIV  , 0xfe01, , , , , , , , )
 XDATABIT( IRC24MCR  , 0xfe02, ENIRC24M, , , , , , , IRC24MST)
@@ -196,7 +196,7 @@ XDATABIT( XOSCCR  , 0xfe03, ENXOSC, X1TYPE, , , , , , XOSCST)
 XDATABIT( IRC32KCR  , 0xfe04, ENIRC32K, , , , , , , IRC32KST)
 SFR(  LIRTRIM    ,  0x9e  )
 SFR(  IRTRIM     ,  0x9f  )
-/*****************************�ж����⹦�ܼĴ���****************************/
+/*****************************中断特殊功能寄存器****************************/
 SFRBIT( IE    ,  0xa8, EA, ELVD, EADC, ES, ET1, EX1, ET0, EX0 )
 SFRBIT( IE2  , 0xaf, , ET4, ET3, ES4, ES3, ET2, ESPI, ES2 )
 
@@ -210,7 +210,7 @@ SFRBIT( IP2H  , 0xb6, , PI2CH, PCMPH, PX4H, PPWMFDH, PPWMH, PSPIH, PS2H )
 SFRBIT( INTCLKO  , 0x8f, , EX4, EX3, EX2, , T2CLKO, T1CLKO, T0CLKO )
 
 SFRBIT( AUXINTIF  , 0xef, , INT4IF, INT3IF, INT2IF, , T4IF, T3IF, T2IF )
-/*****************************��ʱ�����⹦�ܼĴ���**************************/
+/*****************************定时器特殊功能寄存器**************************/
 SFRBIT( TCON    ,  0x88, TF1, TR1, TF0, TR0, IE1, IT1, IE0, IT0 )
 SFRBIT( TMOD  , 0x89, T1_GATE, T1_CT, T1_M1, T1_M0, T0_GATE, T0_CT, T0_M1, T0_M0 )
 SFR(  TL0       ,  0x8a  )
@@ -233,7 +233,7 @@ SFR(  TL2       ,  0xd7  )
 SFR(  WKTCL     ,  0xaa  )
 SFRBIT( WKTCH  , 0xab, WKTEN, , , , , , ,  )
 SFRBIT( WDT_CONTR  , 0xc1, WDT_FLAG, , EN_WDT, CLR_WDT, IDL_WDT, , ,  )
-/*****************************���п����⹦�ܼĴ���**************************/
+/*****************************串行口特殊功能寄存器**************************/
 SFRBIT( SCON    ,  0x98, SM0, SM1, SM2, REN, TB8, RB8, TI, RI )
 SFR(  SBUF      ,  0x99  )
 SFRBIT( S2CON  , 0x9a, S2SM0, S2ST4, S2SM2, S2REN, S2TB8, S2RB8, S2TI, S2RI )
@@ -244,26 +244,26 @@ SFRBIT( S4CON  , 0x84, S4SM0, S4ST4, S4SM2, S4REN, S4TB8, S4RB8, S4TI, S4RI )
 SFR(  S4BUF     ,  0x85  )
 SFR(  SADDR     ,  0xa9  )
 SFR(  SADEN     ,  0xb9  )
-/*****************************ADC���⹦�ܼĴ���****************************/
+/*****************************ADC特殊功能寄存器****************************/
 SFRBIT( ADC_CONTR  , 0xbc, ADC_POWER, ADC_START, ADC_FLAG, , , , ,  )
 SFR(  ADC_RES       ,  0xbd  )
 SFR(  ADC_RESL      ,  0xbe  )
 SFRBIT( ADCCFG  , 0xde, , , , , , , ADC_RESFMT,  )
-/*****************************SPI���⹦�ܼĴ���****************************/
+/*****************************SPI特殊功能寄存器****************************/
 SFRBIT( SPSTAT  , 0xcd, SPIF, WCOL, , , , , ,  )
 SFRBIT( SPCTL  , 0xce, SSIG, SPEN, DORD, MSTR, CPOL, CPHA, ,  )
 SFR(  SPDAT    ,  0xcf  )
-/****************************IAP/ISP���⹦�ܼĴ���*************************/
+/****************************IAP/ISP特殊功能寄存器*************************/
 SFR(  IAP_DATA       ,  0xc2  )
 SFR(  IAP_ADDRH      ,  0xc3  )
 SFR(  IAP_ADDRL      ,  0xc4  )
 SFR(  IAP_CMD        ,  0xc5  )
 SFR(  IAP_TRIG       ,  0xc6  )
 SFRBIT( IAP_CONTR  , 0xc7, IAPEN, SWBS, SWRST, CMD_FAIL, , , ,  )
-/****************************�Ƚ������⹦�ܼĴ���*************************/
+/****************************比较器特殊功能寄存器*************************/
 SFRBIT( CMPCR1  , 0xe6, CMPEN, CMPIF, PIE, NIE, PIS, NIS, CMPOE, CMPRES )
 SFRBIT( CMPCR2  , 0xe7, INVCMPO, DISFLT, , , , , ,  )
-/**************************PCA/PWM ���⹦�ܼĴ���*************************/
+/**************************PCA/PWM 特殊功能寄存器*************************/
 SFRBIT( CCON  , 0xd8, CF, CR, , , CCF3, CCF2, CCF1, CCF0 )
 SFRBIT( CMOD  , 0xd9, CIDL, , , , , , , ECF )
 SFR(  CL   ,  0xe9  )
@@ -284,18 +284,18 @@ SFR(  PCA_PWM0    ,  0xf2  )
 SFR(  PCA_PWM1    ,  0xf3  )
 SFR(  PCA_PWM2    ,  0xf4  )
 SFR(  PCA_PWM3    ,  0xf5  )
-/*****************��ǿ��PWM���η��������⹦�ܼĴ���**********************/
+/*****************增强型PWM波形发生器特殊功能寄存器**********************/
 SFRBIT( PWMCFG  , 0xf1, CBIF, ETADC, , , , , ,  )
 SFRBIT( PWMIF  , 0xf6, C7IF, C6IF, C5IF, C4IF, C3IF, C2IF, C1IF, C0IF )
 SFRBIT( PWMFDCR  , 0xf7, INVCMP, INVIO, ENFD, FLTFLIO, EFDI, FDCMP, FDIO, FDIF )
 SFRBIT( PWMCR  , 0xfe, ENPWM, ECBI, , , , , ,  )
 
 
-/**********************************˵��************************************
-*����PWM���⹦�ܼĴ���λ����չRAM����
-*�Ƚ�P_SW2��BIT7��Ϊ1,��������������Щ�Ĵ���
+/**********************************说明************************************
+*其他PWM特殊功能寄存器位于扩展RAM区域
+*先将P_SW2的BIT7置为1,才能正常操作这些寄存器
 ***************************************************************************/
-/**************************��ǿ��PWM���⹦�ܼĴ���***************************/
+/**************************增强型PWM特殊功能寄存器***************************/
 XDATABIT( PWMCH  , 0xfff0, , , , , , , ,  )
 XDATABIT( PWMCL  , 0xfff1, , , , , , , ,  )
 XDATABIT( PWMCKS  , 0xfff2, , , , SELT2, , , ,  )
@@ -350,11 +350,11 @@ XDATABIT( PWM7T2L  , 0xff73, , , , , , , ,  )
 XDATABIT( PWM7CR  , 0xff74, ENC7O, C7INI, , , , EC7I, EC7T2SI, EC7T1SI )
 XDATABIT( PWM7HLD  , 0xff75, , , , , , , HC7H, HC7L )
 
-/**********************************˵��************************************
-*I2C���⹦�ܼĴ���λ����չRAM����
-*�Ƚ�P_SW2��BIT7��Ϊ1,��������������Щ�Ĵ���
+/**********************************说明************************************
+*I2C特殊功能寄存器位于扩展RAM区域
+*先将P_SW2的BIT7置为1,才能正常操作这些寄存器
 ***************************************************************************/
-/**************************I2C���⹦�ܼĴ���*******************************/
+/**************************I2C特殊功能寄存器*******************************/
 XDATABIT( I2CCFG  , 0xfe80, ENI2C, MSSL, , , , , ,  )
 XDATABIT( I2CMSCR  , 0xfe81, EMSI, , , , , , , )
 XDATABIT( I2CMSST  , 0xfe82, MSBUSY, MSIF, , , , , MSACKI, MSACKO)
